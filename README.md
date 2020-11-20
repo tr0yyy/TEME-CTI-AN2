@@ -1,6 +1,4 @@
-# TEME-CTI-AN2
-CALCULATOARE SI TEHNOLOGIA INFORMATIEI , ANUL 2 , FMI UNIBUC
-Materii și profesori anul 2 CTI -- FMI UNIBUC 2020/2021
+## Materii și profesori anul 2 CTI -- FMI UNIBUC 2020/2021
 
 Semestrul 1
 
