@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexandru/Desktop/253/PROGRAMARE ORIENTATA OBIECT/TEME LABORATOR/2/Tema2-CLION/main.cpp
+iostream
+-
+cstdlib
+-
+cctype
+-
+

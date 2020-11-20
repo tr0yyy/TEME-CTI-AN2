@@ -1,0 +1,3 @@
+"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Tema2_CLION.dir/objects.a
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\Tema2_CLION.dir/objects.a @CMakeFiles\Tema2_CLION.dir\objects1.rsp
+C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\Tema2_CLION.dir/objects.a -Wl,--no-whole-archive  -o Tema2_CLION.exe -Wl,--out-implib,libTema2_CLION.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Tema2_CLION.dir\linklibs.rsp
