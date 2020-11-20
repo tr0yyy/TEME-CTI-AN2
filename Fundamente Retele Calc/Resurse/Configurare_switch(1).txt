@@ -1,0 +1,102 @@
+
+Press RETURN to get started!
+
+Switch>enable
+Switch#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#no ip domain-lookup
+Switch(config)#hostname Sw1GR253 //denumire switch
+Sw1GR253(config)#no cdp run
+Sw1GR253(config)#service password-encryption
+Sw1GR253(config)#enable secret ciscosecpa55
+Sw1GR253(config)#enable password ciscoenapa55
+Sw1GR253(config)#banner motd *Joi la ora 12:00 va avea loc o sedinta de informare a atacurilor de tip DoS!* // Mesajul afisat in terminal
+Sw1GR253(config)#line console 0
+Sw1GR253(config-line)#password ciscoconpa55
+Sw1GR253(config-line)#login
+Sw1GR253(config-line)#logging synchronous
+Sw1GR253(config-line)#exec-timeout 20 20
+Sw1GR253(config-line)#exit
+Sw1GR253(config)#line vty 0 15
+Sw1GR253(config-line)#password ciscovtypa55
+Sw1GR253(config-line)#login
+Sw1GR253(config-line)#logging synchronous
+Sw1GR253(config-line)#exec-timeout 25 25
+Sw1GR253(config-line)#exit
+Sw1GR253(config)#exit
+Sw1GR253#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Sw1GR253#copy running-config startup-config //salveaza modificarile facute
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+Sw1GR253#exit
+
+Sw1GR253 con0 is now available
+
+Press RETURN to get started.
+
+"Joi la ora 12:00 va avea loc o sedinta de informare a atacurilor de tip DoS!" banner setat
+
+User Access Verification
+
+Password: //se trece parola de la consola
+
+Sw1GR253>enable
+Password: //se trece parola de la secret
+Sw1GR253#
+Sw1GR253#clock set 16:36:00 14 OCT 2020
+Sw1GR253#show clock
+16:36:3.702 UTC Wed Oct 14 2020
+Sw1GR253#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Sw1GR253(config)#ip domain-name cti.ro //nume domeniu (setat in mail)
+Sw1GR253(config)#username Admin01 privilege 15 secret Admin01pa55
+Sw1GR253(config)#line vty 0 15
+Sw1GR253(config-line)#transport input ssh
+Sw1GR253(config-line)#login local
+Sw1GR253(config-line)#exit
+Sw1GR253(config)#crypto key generate rsa
+The name for the keys will be: Sw1GR253.cti.ro
+Choose the size of the key modulus in the range of 360 to 2048 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be non-exportable...[OK]
+
+Sw1GR253(config)#interface vlan 1
+*Oct 14 16:39:44.775: %SSH-5-ENABLED: SSH 1.99 has been enabled
+Sw1GR253(config-if)#description Legatura cu reteaua 192.168.253.0/25 // descriere switch cand se conecteaza de pe pc
+Sw1GR253(config-if)#ip-address 192.168.253.2 255.255.255.128
+                      ^
+% Invalid input detected at '^' marker.
+	
+Sw1GR253(config-if)#ip address 192.168.253.2 255.255.255.128
+Sw1GR253(config-if)#no shutdown
+
+Sw1GR253(config-if)#
+%LINK-5-CHANGED: Interface Vlan1, changed state to up
+
+Sw1GR253(config-if)#end
+Sw1GR253#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Sw1GR253#copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+Sw1GR253#
+%LINK-5-CHANGED: Interface GigabitEthernet0/2, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/2, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Vlan1, changed state to up
+
+
+Sw1GR253#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Sw1GR253(config)#interface range fastethernet 0/1-24
+Sw1GR253(config-if-range)#shutdown
+//inchidem restul de porturi

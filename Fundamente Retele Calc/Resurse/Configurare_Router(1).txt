@@ -1,0 +1,128 @@
+Would you like to enter the initial configuration dialog? [yes/no]: no
+
+
+Press RETURN to get started!
+
+
+
+Router>enable
+Router#configure termianl
+                      ^
+% Invalid input detected at '^' marker.
+	
+Router#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#no ip domain-lookup
+Router(config)#hostname R1COPENHAGA
+R1COPENHAGA(config)#no cdp run
+R1COPENHAGA(config)#service password-encryption
+R1COPENHAGA(config)#security passwords min-length 10
+R1COPENHAGA(config)#login block-for 40 attemps 3 wtihin 15
+                                             ^
+% Invalid input detected at '^' marker.
+	
+R1COPENHAGA(config)#login block-for 40 attempts 3 wtihin 15
+                                                   ^
+% Invalid input detected at '^' marker.
+	
+R1COPENHAGA(config)#login block-for 40 attempts 3 within 15
+R1COPENHAGA(config)#banner login * Accesul persoanelor neautorizate strict interzis, altfel suportati consecintele legale!*
+R1COPENHAGA(config)#banner motd *Joi la ora 15:00 serverul va fi oprti!*
+R1COPENHAGA(config)#line console 0
+R1COPENHAGA(config-line)#password ciscoconpa55
+R1COPENHAGA(config-line)#login
+R1COPENHAGA(config-line)#logging synchronous
+R1COPENHAGA(config-line)#exec-timeout 20 20
+R1COPENHAGA(config-line)#exit
+R1COPENHAGA(config)#line vty 0 15
+R1COPENHAGA(config-line)#password ciscovtypa55
+R1COPENHAGA(config-line)#login
+R1COPENHAGA(config-line)#logging synchronous
+R1COPENHAGA(config-line)#exec-timeout 20 20
+R1COPENHAGA(config-line)#end
+R1COPENHAGA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+R1COPENHAGA#clock set 22:54:00 25 OCT 2020
+R1COPENHAGA#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1COPENHAGA(config)#ip domain-name cti.ro
+R1COPENHAGA(config)#username Admin01 privilege 15 secret Admin01pa55
+R1COPENHAGA(config)#line vty 0 15
+R1COPENHAGA(config-line)#transport input ssh
+R1COPENHAGA(config-line)#login local
+R1COPENHAGA(config-line)#exit
+R1COPENHAGA(config)#crypto key generate rsa
+The name for the keys will be: R1COPENHAGA.cti.ro
+Choose the size of the key modulus in the range of 360 to 2048 for your
+  General Purpose Keys. Choosing a key modulus greater than 512 may take
+  a few minutes.
+
+How many bits in the modulus [512]: 2048
+% Generating 2048 bit RSA keys, keys will be non-exportable...[OK]
+
+R1COPENHAGA(config)#enable secret ciscosecpa55
+*Oct 25 22:54:54.892: %SSH-5-ENABLED: SSH 1.99 has been enabled
+R1COPENHAGA(config)#enable password ciscoenapa55
+R1COPENHAGA(config)#end
+R1COPENHAGA#
+%SYS-5-CONFIG_I: Configured from console by console
+
+R1COPENHAGA#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1COPENHAGA(config)#interface gigabitethernet 0/0
+R1COPENHAGA(config-if)#description Legatura cu reteaua 172.32.16.0/22
+R1COPENHAGA(config-if)#ip address 172.32.16.1 255.255.252.0
+R1COPENHAGA(config-if)#no shutdown
+
+R1COPENHAGA(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+R1COPENHAGA(config-if)#
+R1COPENHAGA#
+%SYS-5-CONFIG_I: Configured from console by console
+R1COPENHAGA#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+R1COPENHAGA#copy running-config startup-config
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+R1COPENHAGA#reload
+Proceed with reload? [confirm]
+System Bootstrap, Version 15.1(4)M4, RELEASE SOFTWARE (fc1)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 2010 by cisco Systems, Inc.
+Total memory size = 512 MB - On-board = 512 MB, DIMM0 = 0 MB
+CISCO2911/K9 platform with 524288 Kbytes of main memory
+Main memory is configured to 72/-1(On-board/DIMM0) bit mode with ECC disabled
+
+Readonly ROMMON initialized
+
+program load complete, entry point: 0x80803000, size: 0x1b340
+program load complete, entry point: 0x80803000, size: 0x1b340
+
+IOS Image Load Test
+___________________
+Digitally Signed Release Software
+program load complete, entry point: 0x81000000, size: 0x3bcd3d8
+Self decompressing the image :
+########################################################################## [OK]
+
+Press RETURN to get started!
+
+Joi la ora 15:00 serverul va fi oprti!
+ Accesul persoanelor neautorizate strict interzis, altfel suportati consecintele legale!
+
+User Access Verification
+
+Password: //parola consola
+R1COPENHAGA>enable
+Password: //parola secret
+R1COPENHAGA#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1COPENHAGA(config)#interface range gigabitethernet 0/1-2
+R1COPENHAGA(config-if-range)#shutdown
+//inchidem porturile neutilizate
+R1COPENHAGA(config-if-range)#
+R1COPENHAGA#
+%SYS-5-CONFIG_I: Configured from console by console

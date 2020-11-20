@@ -1,0 +1,9 @@
+La services
+
+-http	-dam disable la http deoarece e nesecurizat nu vrem sa fie on doar https ramane on
+
+-dns	-configurare domain
+	-adresa din mail de ip
+
+-email	-configurare domain
+	-adaugarea tuturor userilor
