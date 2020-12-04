@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Alexandru/Desktop/253/PROGRAMARE ORIENTATA OBIECT/TEME LABORATOR/3/main.cpp
+iostream
+-
+cstdlib
+-
+vector
+-
+cstring
+-
+unordered_map
+-
+
