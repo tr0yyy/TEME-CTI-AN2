@@ -131,7 +131,6 @@ public:
     {
         this -> denumire_pizza = denumire_pizza;
         this -> pret_manopera = pret_manopera;
-        this -> ingrediente.reserve(0);
 
     }
     ~pizza()
@@ -150,8 +149,8 @@ public:
         return pret;
     }
     /// get
-    string get_denumire_pizza() const{return denumire_pizza;}
-    int get_pret_manopera() const{return pret_manopera;}
+    string get_denumire_pizza(){return denumire_pizza;}
+    int get_pret_manopera(){return pret_manopera;}
     vector<ingredient>& get_ingrediente() {return ingrediente;}
     /// set
     void set_denumire_pizza(string denumire_pizza){this->denumire_pizza = denumire_pizza;}
@@ -175,7 +174,11 @@ public:
             ingrediente.reserve(cnting);
             for (int i = 0; i < cnting; i++)
             {
-                ingredient x;
+                ingredient x;   /// ||=== Build file: "no target" in "no project" (compiler: unknown) ===|
+                                /// error: binding reference of type 'ingredient&' to 'const ingredient' discards qualifiers|
+                                ///error: cannot bind non-const lvalue reference of type 'ingredient&' to an rvalue of type 'ingredient'|
+                                ///||=== Build failed: 2 error(s), 13 warning(s) (0 minute(s), 0 second(s)) ===|
+
                 in >> x;
                 ingrediente.push_back(x);
             }
@@ -210,10 +213,105 @@ public:
         p.afisare(out);
         return out;
     }
+    pizza& operator=(pizza& p)
+    {
+        this -> denumire_pizza = p.denumire_pizza;
+        this -> pret_manopera = p.pret_manopera;
+        ingrediente = move(p.ingrediente);
+    }
 };
+
+template <class t> class meniu
+{
+private:
+    unordered_map<t, vector<ingredient>> produse;
+    int cnt_prod;
+public:
+    meniu(int cnt = 0 , unordered_map<t, vector<ingredient>> produse = unordered_map<t, vector<ingredient>>())
+    {
+        cnt_prod = cnt;
+        this->produse = produse;
+    }
+    meniu(meniu& m)
+    {
+        cnt_prod = m.cnt_prod;
+        produse = m.produse;
+    }
+    ~meniu()
+    {
+        cnt_prod = -1;
+        delete produse;
+    }
+    void citire(istream &in)
+    {
+        cout << "Cate produse?: ";
+        int n;
+        in >> n;
+        cnt_prod = n;
+        for(int i = 0 ; i < n ; i++)
+        {
+            t tip_produs;
+            in >> tip_produs;
+            int cnting;
+            vector<ingredient> ingrediente;
+            cout << "Numarul de ingrediente: ";
+            in >> cnting;
+            if(cnting < 0)
+                throw 2;
+            ingrediente.reserve(cnting);
+            for (int i = 0; i < cnting; i++)
+            {
+                ingredient x;
+                in >> x;
+                ingrediente.push_back(x);
+            }
+            pair<t,vector<ingredient>> produs (tip_produs,ingrediente);
+            produse.insert(produs);
+        }
+    }
+    friend istream& operator>>(istream& in, meniu& m)
+    {
+        m.citire(in);
+        return in;
+    }
+    void afisare(ostream &out)
+    {
+        out << "Meniul este compus din: " << endl;
+        for(auto i = produse.begin() ; i != produse.end() ; ++i)
+        {
+            out << i->first();
+            out << " avand urmatoarele ingrediente:\n";
+            vector<ingredient> ingrediente = i->second();
+            for(auto j = ingrediente.begin() ; j != ingrediente.end() ; ++j)
+                out << (*j) << endl;
+            out << endl;
+        }
+    }
+    friend ostream& operator<<(ostream& out, meniu &m)
+    {
+        m.afisare(out);
+        return out;
+    }
+    meniu& operator=(meniu& m)
+    {
+        produse = m.produse;
+        cnt_prod = m.cnt_prod;
+    }
+    meniu& operator+=(pair<t,vector<ingredient>> produs)
+    {
+        cnt_prod++;
+        produse.insert(produs);
+    }
+};
+
+template <> class meniu <pizza>
+{
+    /// WIP
+};
+
 
 int main()
 {
-    cout << "cam 20% e gata :(";
+    cout << "cam 50% e gata :(";
     return 0;
 }
