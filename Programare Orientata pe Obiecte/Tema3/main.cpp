@@ -26,7 +26,7 @@ public:
         this -> cantitate = cantitate;
         this -> pret = pret;
     }
-    ingredient(ingredient& i)
+    ingredient(const ingredient &i)
     {
         this -> denumire = i.denumire;
         this -> cantitate = i.cantitate;
@@ -77,6 +77,7 @@ public:
             in >> can;
             if(can <= 0)
                 throw 2;
+            cout << "\nPretul ingredientului: ";
             in >> pr;
             if(pr <= 0)
                 throw 3;
@@ -92,7 +93,11 @@ public:
                 cout << "EROARE ! Cantitatea nu poate fi mai mica sau egala cu 0!";
             else if(i == 3)
                 cout << "EROARE ! Pretul nu poate fi mai mic sau egal cu 0!";
-            exit(EXIT_FAILURE);
+            cout << "\n\nREPETARE CITIRE INGREDIENTE\n\n";
+            system("pause");
+            system("cls");
+            in.clear();
+            citire(in);
         }
     }
     friend istream& operator>>(istream& in, ingredient& i)
@@ -174,11 +179,7 @@ public:
             ingrediente.reserve(cnting);
             for (int i = 0; i < cnting; i++)
             {
-                ingredient x;   /// ||=== Build file: "no target" in "no project" (compiler: unknown) ===|
-                                /// error: binding reference of type 'ingredient&' to 'const ingredient' discards qualifiers|
-                                ///error: cannot bind non-const lvalue reference of type 'ingredient&' to an rvalue of type 'ingredient'|
-                                ///||=== Build failed: 2 error(s), 13 warning(s) (0 minute(s), 0 second(s)) ===|
-
+                ingredient x;
                 in >> x;
                 ingrediente.push_back(x);
             }
@@ -225,22 +226,19 @@ template <class t> class meniu
 {
 private:
     unordered_map<t, vector<ingredient>> produse;
-    int cnt_prod;
+    static int cnt_prod;
 public:
     meniu(int cnt = 0 , unordered_map<t, vector<ingredient>> produse = unordered_map<t, vector<ingredient>>())
     {
-        cnt_prod = cnt;
         this->produse = produse;
     }
     meniu(meniu& m)
     {
-        cnt_prod = m.cnt_prod;
         produse = m.produse;
     }
     ~meniu()
     {
-        cnt_prod = -1;
-        delete produse;
+        produse.erase(produse.begin(),produse.end());
     }
     void citire(istream &in)
     {
@@ -279,9 +277,9 @@ public:
         out << "Meniul este compus din: " << endl;
         for(auto i = produse.begin() ; i != produse.end() ; ++i)
         {
-            out << i->first();
+            out << (*i).first;
             out << " avand urmatoarele ingrediente:\n";
-            vector<ingredient> ingrediente = i->second();
+            vector<ingredient> ingrediente = (*i).second;
             for(auto j = ingrediente.begin() ; j != ingrediente.end() ; ++j)
                 out << (*j) << endl;
             out << endl;
@@ -304,14 +302,13 @@ public:
     }
 };
 
-template <> class meniu <pizza>
-{
-    /// WIP
-};
+template<class t> int meniu<t>::cnt_prod;
 
 
 int main()
 {
-    cout << "cam 50% e gata :(";
+    meniu<int> meniuproba;
+    cin >> meniuproba;
+    cout << meniuproba;
     return 0;
 }
