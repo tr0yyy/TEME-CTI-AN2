@@ -1,0 +1,12 @@
+
+Denumire pizza: vegeta
+Pret manopera: 200
+Lista ingrediente pizza:
+
+Denumire ingredient: faina
+Cantitate ingredient: 5000
+Pret ingredient: 500
+
+
+
+VALOARE TOTALA INCASATA PIZZA VEGETARIANA: 700

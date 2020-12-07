@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <vector>
 #include <cstring>
+#include <fstream>
 #include <unordered_map>
 
 using namespace std;
@@ -26,7 +27,7 @@ public:
         this -> cantitate = cantitate;
         this -> pret = pret;
     }
-    ingredient(const ingredient &i)
+    ingredient(ingredient &i)
     {
         this -> denumire = i.denumire;
         this -> cantitate = i.cantitate;
@@ -129,7 +130,7 @@ class pizza : public pizzerie
 private:
     string denumire_pizza;
     float pret_manopera;
-    vector<ingredient> ingrediente;
+    vector<ingredient*> ingrediente;
 
     bool vegetariana;
 public:
@@ -139,6 +140,12 @@ public:
         this -> pret_manopera = pret_manopera;
         this -> vegetariana = vegetariana;
 
+    }
+    pizza(pizza &p)
+    {
+        this -> denumire_pizza = p.denumire_pizza;
+        this -> pret_manopera = pret_manopera;
+        this -> vegetariana = vegetariana;
     }
     ~pizza()
     {
@@ -152,7 +159,7 @@ public:
     {
         float pret = 0;
         for(auto i = ingrediente.begin() ; i != ingrediente.end() ; ++i)
-            pret += i->get_pret();
+            pret += (*i)->get_pret();
         pret += (float)pret_manopera;
         return pret;
     }
@@ -160,11 +167,11 @@ public:
     string get_denumire_pizza(){return denumire_pizza;}
     float get_pret_manopera(){return pret_manopera;}
     bool get_vegetariana(){return vegetariana;}
-    vector<ingredient>& get_ingrediente() {return ingrediente;}
+    vector<ingredient*>& get_ingrediente() {return ingrediente;}
     /// set
     void set_denumire_pizza(string denumire_pizza){this->denumire_pizza = denumire_pizza;}
     void set_pret_manopera(float pret_manopera){this->pret_manopera = pret_manopera;}
-    void set_ingrediente(vector<ingredient> v){ingrediente = move(v);}
+    void set_ingrediente(vector<ingredient*> v){ingrediente = move(v);}
     void set_vegetariana(bool vegetarian){this->vegetariana = vegetarian;}
     void citire(istream &in) {
         try
@@ -191,9 +198,9 @@ public:
             ingrediente.reserve(cnting);
             for (int i = 0; i < cnting; i++)
             {
-                ingredient x;
-                in >> x;
-                ingrediente.push_back(x);
+                ingredient *x = new ingredient;
+                in >> (*x);
+                ingrediente.push_back((*&x));
             }
             denumire_pizza = denpizza;
             pret_manopera = prmanop;
@@ -225,7 +232,7 @@ public:
         out << "\nPret manopera: " << pret_manopera;
         out << "\nLista ingrediente pizza:\n";
         for(auto i = ingrediente.begin() ; i != ingrediente.end() ; ++i)
-            out << (*i) << endl;
+            out << (**i) << endl;
     }
     friend ostream& operator<<(ostream& out, pizza& p)
     {
@@ -243,10 +250,10 @@ public:
 template <class t> class meniu
 {
 private:
-    unordered_map<t, vector<ingredient>> produse;
+    unordered_map<t, vector<ingredient*>> produse;
     static int cnt_prod;
 public:
-    meniu(unordered_map<t, vector<ingredient>> produse = unordered_map<t, vector<ingredient>>())
+    meniu(unordered_map<t, vector<ingredient*>> produse = unordered_map<t, vector<ingredient*>>())
     {
         this->produse = produse;
     }
@@ -269,7 +276,7 @@ public:
             t tip_produs;
             in >> tip_produs;
             int cnting;
-            vector<ingredient> ingrediente;
+            vector<ingredient*> ingrediente;
             cout << "Numarul de ingrediente: ";
             in >> cnting;
             if(cnting < 0)
@@ -277,11 +284,11 @@ public:
             ingrediente.reserve(cnting);
             for (int i = 0; i < cnting; i++)
             {
-                ingredient x;
-                in >> x;
-                ingrediente.push_back(x);
+                ingredient *x = new ingredient;
+                in >> (*x);
+                ingrediente.push_back((*&x));
             }
-            pair<t,vector<ingredient>> produs (tip_produs,ingrediente);
+            pair<t,vector<ingredient*>> produs (tip_produs,ingrediente);
             produse.insert(produs);
         }
     }
@@ -298,9 +305,9 @@ public:
             out << "ID Produs: ";
             out << (*i).first;
             out << "\navand urmatoarele ingrediente:\n";
-            vector<ingredient> ingrediente = (*i).second;
+            vector<ingredient*> ingrediente = (*i).second;
             for(auto j = ingrediente.begin() ; j != ingrediente.end() ; ++j)
-                out << (*j) << endl;
+                out << (**j) << endl;
             out << endl;
         }
     }
@@ -314,7 +321,7 @@ public:
         produse = m.produse;
         cnt_prod = m.cnt_prod;
     }
-    meniu& operator+=(pair<t,vector<ingredient>> produs)
+    meniu& operator+=(pair<t,vector<ingredient*>> produs)
     {
         cnt_prod++;
         produse.insert(produs);
@@ -326,10 +333,10 @@ template<class t> int meniu<t>::cnt_prod;
 template <> class meniu <pizza>
 {
 private:
-    unordered_map<int, vector<ingredient>> produse;
+    unordered_map<int, vector<ingredient*>> produse;
     static int cnt_prod;
 public:
-    meniu(unordered_map<int, vector<ingredient>> produse = unordered_map<int, vector<ingredient>>())
+    meniu(unordered_map<int, vector<ingredient*>> produse = unordered_map<int, vector<ingredient*>>())
     {
         this->produse = produse;
     }
@@ -349,11 +356,11 @@ public:
         cnt_prod = n;
         for(int i = 1 ; i <= n ; i++)
         {
-            pizza p;
-            in >> p;
+            pizza (*p) = new pizza;
+            in >> (*p);
             int id_pizza = i;
-            vector<ingredient> ingrediente = p.get_ingrediente();
-            pair<int,vector<ingredient>> produs (id_pizza,ingrediente);
+            vector<ingredient*> ingrediente = p->get_ingrediente();
+            pair<int,vector<ingredient*>> produs (id_pizza,ingrediente);
             produse.insert(produs);
         }
     }
@@ -370,9 +377,9 @@ public:
             out << "ID Produs: ";
             out << (*i).first;
             out << "\navand urmatoarele ingrediente:\n";
-            vector<ingredient> ingrediente = (*i).second;
+            vector<ingredient*> ingrediente = (*i).second;
             for(auto j = ingrediente.begin() ; j != ingrediente.end() ; ++j)
-                out << (*j) << endl;
+                out << (**j) << endl;
             out << endl;
         }
     }
@@ -386,7 +393,7 @@ public:
         produse = m.produse;
         cnt_prod = m.cnt_prod;
     }
-    meniu& operator+=(pair<int,vector<ingredient>> produs)
+    meniu& operator+=(pair<int,vector<ingredient*>> produs)
     {
         cnt_prod++;
         produse.insert(produs);
@@ -498,7 +505,124 @@ public:
     }
 };
 
+template <> class comanda_online <pizza>
+{
+private:
+    string adresa;
+    int distanta;
+    float pretfinal;
+    vector<pizza*> produse;
+    float calcul_pret_final()
+    {
+        float s = 0;
+        for(auto i = produse.begin() ; i != produse.end() ; ++i)
+            s += (**i).calcul_pret();
+        if(distanta < 10)
+            return s;
+        else{
+            cout << endl << s << endl;
+            float transport = 0.05*s; /// 5% din pretul comenzii pt transport
+            float sumatrans = transport;
+            int aux = distanta;
+            aux -= 10;
+            while(aux >= 10)
+            {
+                sumatrans += transport; /// adaugare inca 5%
+                aux -= 10;
+            }
+            return (sumatrans + s);}
+    }
+    void caz_special_veg()
+    {
+        ofstream f("document-contabil.txt");
+        int s = 0;
+        for(auto i = produse.begin() ; i != produse.end() ; ++i)
+        {
+            if((**i).get_vegetariana() == 1)
+            {
+                f << (**i) << endl;
+                s = (**i).calcul_pret();
+            }
+        }
+        f << endl << endl;
+        f << "VALOARE TOTALA INCASATA PIZZA VEGETARIANA: " << s;
+        f.close();
+    }
+public:
+    comanda_online(string adresa = "", int distanta = 0, vector<pizza*> produse = vector<pizza*>())
+    {
+        this->adresa = adresa;
+        this->distanta = distanta;
+        this->produse = produse;
+        pretfinal = 0;
+    }
+    comanda_online(comanda_online& co)
+    {
+        adresa = co.adresa;
+        distanta = co.distanta;
+        produse = co.produse;
+        pretfinal = co.pretfinal;
+    }
+    ~comanda_online()
+    {
+        adresa = "";
+        distanta = 0;
+        produse.erase(produse.begin(),produse.end());
+        pretfinal = 0;
+    }
+    void citire(istream &in)
+    {
+        cout << "Adresa clientului: ";
+        string adr;
+        getline(in,adr);
+        cout << "Care e distanta pana la client?: ";
+        int n;
+        in >> n;
+        cout << "Cate produse a comandat? ";
+        int m;
+        in >> m;
+        for(int i = 0 ; i < m ; i++)
+        {
+            pizza (*p) = new pizza;
+            in >> (*p);
+            produse.push_back((*&p));
+        }
+        adresa = adr;
+        distanta = n;
+        pretfinal = calcul_pret_final();
+        caz_special_veg();
+    }
+    friend istream& operator>>(istream &in , comanda_online& co)
+    {
+        co.citire(in);
+        return in;
+    }
+    void afisare(ostream& out)
+    {
+        out << "Adresa clientului: " << adresa << endl;
+        out << "Distanta pana la client: " << distanta << endl;
+        out << "Produsele comandate si pretul lor:\n";
+        for(auto i = produse.begin() ; i != produse.end() ; ++i)
+            out << "---- " << (**i).get_denumire_pizza() << " cu pretul: " << (**i).calcul_pret() << endl;
+        out << "Pret final: " << pretfinal;
+    }
+    friend ostream& operator<<(ostream &out, comanda_online& co)
+    {
+        co.afisare(out);
+        return out;
+    }
+    comanda_online& operator=(comanda_online& co)
+    {
+        adresa = co.adresa;
+        distanta = co.distanta;
+        produse = co.produse;
+        pretfinal = co.pretfinal;
+    }
+};
+
 int main()
 {
-    return 0;
+    comanda_online <pizza> cop;
+    cin >> cop;
+    cout << cop;
 }
