@@ -888,7 +888,9 @@ void menu()
                 exit(0);
                 break;
             default:
-                cout << "\n Optiune invalida!";
+                cout << "\n Optiune invalida! \n";
+                system("pause");
+                break;
         }
     }while(opt != 0);
 }
