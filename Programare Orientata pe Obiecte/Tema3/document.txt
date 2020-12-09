@@ -1,0 +1,25 @@
+DOCUMENT CONTABIL
+PIZZERIA P
+STRADA ITALIA, NR.1
+BUCURESTI
+
+Pizza vegetariana
+Denumire pizza: vegeta
+Pret manopera: 100
+Lista ingrediente pizza:
+Denumire ingredient: faina
+Cantitate ingredient: 30
+Pret ingredient: 2
+
+
+Pizza vegetariana
+Denumire pizza: vegeta2
+Pret manopera: 150
+Lista ingrediente pizza:
+Denumire ingredient: faina
+Cantitate ingredient: 20
+Pret ingredient: 3
+
+
+
+VALOAREA INCASATA: 267.75
