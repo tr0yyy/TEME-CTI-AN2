@@ -438,9 +438,10 @@ public:
         produse = m.produse;
         cnt_prod = m.cnt_prod;
     }
-    meniu& operator+=(pair<int,vector<ingredient*>> produs)
+    meniu& operator+=(vector<ingredient*> ingrediente)
     {
         cnt_prod++;
+        pair<int,vector<ingredient*>> produs (cnt_prod,ingrediente);
         produse.insert(produs);
     }
 };
