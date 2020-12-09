@@ -69,16 +69,16 @@ public:
         {
             string den; /// den - denumire
             float can, pr; /// can - cantitate ; pr - pret
-            cout << "\nDenumirea ingredientului: ";
+            cout << "Denumirea ingredientului: ";
             in >> den;
             for(int i = 0 ; i < den.length() ; i++)
                 if(!isalpha(den[i]))
                     throw 1;
-            cout << "\nCantitatea ingredientului: ";
+            cout << "Cantitatea ingredientului: ";
             in >> can;
             if(can <= 0)
                 throw 2;
-            cout << "\nPretul ingredientului: ";
+            cout << "Pretul ingredientului: ";
             in >> pr;
             if(pr <= 0)
                 throw 3;
@@ -108,9 +108,9 @@ public:
     }
     void afisare(ostream& out)
     {
-        out << "\nDenumire ingredient: "<< denumire;
-        out << "\nCantitate ingredient: " << cantitate;
-        out << "\nPret ingredient: " << pret;
+        out << "Denumire ingredient: "<< denumire << endl;
+        out << "Cantitate ingredient: " << cantitate << endl;
+        out << "Pret ingredient: " << pret << endl;
     }
     friend ostream& operator<<(ostream& out, ingredient& i)
     {
@@ -127,35 +127,29 @@ public:
 
 class pizza : public pizzerie
 {
-private:
+protected:
     string denumire_pizza;
     float pret_manopera;
     vector<ingredient*> ingrediente;
 
-    bool vegetariana;
 public:
-    pizza(string denumire_pizza = "" , float pret_manopera = 0, bool vegetariana = 0):pizzerie()
+    pizza(string denumire_pizza = "" , float pret_manopera = 0):pizzerie()
     {
         this -> denumire_pizza = denumire_pizza;
         this -> pret_manopera = pret_manopera;
-        this -> vegetariana = vegetariana;
-
     }
     pizza(pizza &p)
     {
         this -> denumire_pizza = p.denumire_pizza;
         this -> pret_manopera = pret_manopera;
-        this -> vegetariana = vegetariana;
     }
-    ~pizza()
+    virtual ~pizza()
     {
         denumire_pizza = "";
         pret_manopera = 0;
-        vegetariana = 0;
-        ingrediente.clear();
-        ingrediente.shrink_to_fit();
+        ingrediente.erase(ingrediente.begin(),ingrediente.end());
     }
-    virtual float calcul_pret()
+    float calcul_pret()
     {
         float pret = 0;
         for(auto i = ingrediente.begin() ; i != ingrediente.end() ; ++i)
@@ -166,14 +160,12 @@ public:
     /// get
     string get_denumire_pizza(){return denumire_pizza;}
     float get_pret_manopera(){return pret_manopera;}
-    bool get_vegetariana(){return vegetariana;}
     vector<ingredient*>& get_ingrediente() {return ingrediente;}
     /// set
     void set_denumire_pizza(string denumire_pizza){this->denumire_pizza = denumire_pizza;}
     void set_pret_manopera(float pret_manopera){this->pret_manopera = pret_manopera;}
     void set_ingrediente(vector<ingredient*> v){ingrediente = move(v);}
-    void set_vegetariana(bool vegetarian){this->vegetariana = vegetarian;}
-    void citire(istream &in) {
+    virtual void citire(istream &in) {
         try
         {
             string denpizza;
@@ -185,12 +177,6 @@ public:
             in >> prmanop;
             if(prmanop < 0)
                 throw 1;
-            cout << "Este vegetariana? : (0 - nu ; 1 - da) ";
-            int veg;
-            in >> veg;
-            if(veg != 0 && veg != 1)
-                throw 4;
-            vegetariana = veg;
             cout << "Numarul de ingrediente: ";
             in >> cnting;
             if(cnting < 0)
@@ -204,7 +190,6 @@ public:
             }
             denumire_pizza = denpizza;
             pret_manopera = prmanop;
-            ///functie calcul_pret
         }
         catch(int i)
         {
@@ -226,11 +211,11 @@ public:
         p.citire(in);
         return in;
     }
-    void afisare(ostream &out)
+    virtual void afisare(ostream &out)
     {
-        out << "\nDenumire pizza: " << denumire_pizza;
-        out << "\nPret manopera: " << pret_manopera;
-        out << "\nLista ingrediente pizza:\n";
+        out << "Denumire pizza: " << denumire_pizza << endl;
+        out << "Pret manopera: " << pret_manopera << endl;
+        out << "Lista ingrediente pizza:\n";
         for(auto i = ingrediente.begin() ; i != ingrediente.end() ; ++i)
             out << (**i) << endl;
     }
@@ -246,6 +231,52 @@ public:
         ingrediente = move(p.ingrediente);
     }
 };
+
+class vegetariana : public pizza
+{
+private:
+    bool vegetarian;
+public:
+    vegetariana(string denumire_pizza = "" , float pret_manopera = 0,bool vegetarian = 0):pizza(denumire_pizza,pret_manopera)
+    {
+        this -> vegetarian = vegetarian;
+    }
+    vegetariana(vegetariana& v):pizza(v)
+    {
+        this -> vegetarian = v.vegetarian;
+    }
+    ~vegetariana()
+    {
+        vegetarian = 0;
+    }
+    bool get_vegetariana(){return vegetarian;}
+    void set_vegetariana(bool vegetarian){this->vegetarian = vegetarian;}
+    void citire(istream& in) {
+        vegetarian = 1;
+        pizza::citire(in);
+    }
+    friend istream& operator>>(istream &in, vegetariana& v)
+    {
+        v.citire(in);
+        return in;
+    }
+    void afisare(ostream& out)
+    {
+        out << "Pizza vegetariana\n";
+        pizza::afisare(out);
+    }
+    friend ostream& operator<<(ostream &out, vegetariana &v)
+    {
+        v.afisare(out);
+        return out;
+    }
+    vegetariana& operator=(vegetariana& v)
+    {
+        pizza::operator=(v);
+        vegetarian = v.vegetarian;
+    }
+};
+
 
 template <class t> class meniu
 {
@@ -279,8 +310,6 @@ public:
             vector<ingredient*> ingrediente;
             cout << "Numarul de ingrediente: ";
             in >> cnting;
-            if(cnting < 0)
-                throw 2;
             ingrediente.reserve(cnting);
             for (int i = 0; i < cnting; i++)
             {
@@ -356,7 +385,13 @@ public:
         cnt_prod = n;
         for(int i = 1 ; i <= n ; i++)
         {
-            pizza (*p) = new pizza;
+            pizza (*p);
+            cout << "Pizza este vegetariana? (0 - nu, 1 - da) ";
+            bool x;
+            in >> x;
+            if(x == 0)
+                p = new pizza;
+            else p = new vegetariana;
             in >> (*p);
             int id_pizza = i;
             vector<ingredient*> ingrediente = p->get_ingrediente();
@@ -417,7 +452,6 @@ private:
         if(distanta < 10)
             return s;
         else{
-            cout << endl << s << endl;
         float transport = 0.05*s; /// 5% din pretul comenzii pt transport
         float sumatrans = transport;
         int aux = distanta;
@@ -520,7 +554,6 @@ private:
         if(distanta < 10)
             return s;
         else{
-            cout << endl << s << endl;
             float transport = 0.05*s; /// 5% din pretul comenzii pt transport
             float sumatrans = transport;
             int aux = distanta;
@@ -531,22 +564,6 @@ private:
                 aux -= 10;
             }
             return (sumatrans + s);}
-    }
-    void caz_special_veg()
-    {
-        ofstream f("document-contabil.txt");
-        int s = 0;
-        for(auto i = produse.begin() ; i != produse.end() ; ++i)
-        {
-            if((**i).get_vegetariana() == 1)
-            {
-                f << (**i) << endl;
-                s = (**i).calcul_pret();
-            }
-        }
-        f << endl << endl;
-        f << "VALOARE TOTALA INCASATA PIZZA VEGETARIANA: " << s;
-        f.close();
     }
 public:
     comanda_online(string adresa = "", int distanta = 0, vector<pizza*> produse = vector<pizza*>())
@@ -583,14 +600,15 @@ public:
         in >> m;
         for(int i = 0 ; i < m ; i++)
         {
-            pizza (*p) = new pizza;
+            pizza (*p);
+            p = new pizza;
             in >> (*p);
             produse.push_back((*&p));
+
         }
         adresa = adr;
         distanta = n;
         pretfinal = calcul_pret_final();
-        caz_special_veg();
     }
     friend istream& operator>>(istream &in , comanda_online& co)
     {
@@ -620,9 +638,203 @@ public:
     }
 };
 
-int main()
+template <> class comanda_online <vegetariana>
 {
-    comanda_online <pizza> cop;
-    cin >> cop;
-    cout << cop;
+private:
+    string adresa;
+    int distanta;
+    float pretfinal;
+    vector<vegetariana*> produse;
+    float calcul_pret_final()
+    {
+        float s = 0;
+        for(auto i = produse.begin() ; i != produse.end() ; ++i)
+            s += (**i).calcul_pret();
+        if(distanta < 10)
+            return s;
+        else{
+            float transport = 0.05*s; /// 5% din pretul comenzii pt transport
+            float sumatrans = transport;
+            int aux = distanta;
+            aux -= 10;
+            while(aux >= 10)
+            {
+                sumatrans += transport; /// adaugare inca 5%
+                aux -= 10;
+            }
+            return (sumatrans + s);}
+    }
+public:
+    comanda_online(string adresa = "", int distanta = 0, vector<vegetariana*> produse = vector<vegetariana*>())
+    {
+        this->adresa = adresa;
+        this->distanta = distanta;
+        this->produse = produse;
+        pretfinal = 0;
+    }
+    comanda_online(comanda_online& co)
+    {
+        adresa = co.adresa;
+        distanta = co.distanta;
+        produse = co.produse;
+        pretfinal = co.pretfinal;
+    }
+    ~comanda_online()
+    {
+        adresa = "";
+        distanta = 0;
+        produse.erase(produse.begin(),produse.end());
+        pretfinal = 0;
+    }
+    void citire(istream &in)
+    {
+        cout << "Adresa clientului: ";
+        string adr;
+        getline(in,adr);
+        cout << "Care e distanta pana la client?: ";
+        int n;
+        in >> n;
+        cout << "Cate produse a comandat? ";
+        int m;
+        in >> m;
+        for(int i = 0 ; i < m ; i++)
+        {
+            vegetariana *v = new vegetariana;
+            in >> (*v);
+            produse.push_back((*&v));
+
+        }
+        adresa = adr;
+        distanta = n;
+        pretfinal = calcul_pret_final();
+    }
+    friend istream& operator>>(istream &in , comanda_online& co)
+    {
+        co.citire(in);
+        return in;
+    }
+    void afisare(ostream& out)
+    {
+        out << "Adresa clientului: " << adresa << endl;
+        out << "Distanta pana la client: " << distanta << endl;
+        out << "Produsele comandate si pretul lor:\n";
+        for(auto i = produse.begin() ; i != produse.end() ; ++i)
+            out << "---- " << (**i).get_denumire_pizza() << " cu pretul: " << (**i).calcul_pret() << endl;
+        out << "Pret final: " << pretfinal;
+    }
+    friend ostream& operator<<(ostream &out, comanda_online& co)
+    {
+        co.afisare(out);
+        return out;
+    }
+    comanda_online& operator=(comanda_online& co)
+    {
+        adresa = co.adresa;
+        distanta = co.distanta;
+        produse = co.produse;
+        pretfinal = co.pretfinal;
+    }
+    void document_contabil(string fisier)
+    {
+        ofstream g(fisier);
+        g << "DOCUMENT CONTABIL\nPIZZERIA P\nSTRADA ITALIA, NR.1\nBUCURESTI\n\n";
+        for(auto i = produse.begin() ; i != produse.end() ; ++i)
+            g << (**i) << endl;
+        g << endl << "VALOAREA INCASATA: " << calcul_pret_final();
+        g.close();
+    }
+};
+
+class MeniuInterface
+{
+private:
+    static int opt;
+public:
+    const void menu_init()
+    {
+        cout << "----------------------NICOI ALEXANDRU // GRUPA 253 // PROGRAMARE ORIENTATA PE OBIECT----------------------\n";
+        cout << "-----------------------PROIECT 3 - TEMA 8-----------------------\n";
+        cout << "-----------Pentru a utiliza o functie a meniului, tastati cifra corespunzatoare functiei alese-------------\n";
+        cout << "\n";
+        cout << "1. Citire n Pizze, memorare si afisare (folosind upcast - dynamic_cast).\n";
+        cout << "2. Citire si afisare Meniu pizzerie.\n";
+        cout << "3. Citire si afisare Comanda_Online.\n";
+        cout << "4. Citire , afisare si prelucrare comanda online pizza vegetariana (scriere in document contabil extern)\n";
+        cout << "0. Iesire.\n";
+        cout << "\n\n";
+        cout << "Optiunea aleasa: ";
+    }
+    void set_opt(int opt){this->opt = opt;}
+
+};
+
+void opt1()
+{
+}
+
+void opt2()
+{
+}
+
+void opt3()
+{
+}
+
+void opt4()
+{
+}
+
+void opt5()
+{
+}
+
+void menu()
+{
+    int opt;
+    do {
+        system("cls");
+        //menu_init();
+        cin >> opt;
+        switch (opt)
+        {
+            case 1:
+                opt1();
+                cout << "\n\n";
+                system("pause");
+                break;
+            case 2:
+                opt2();
+                cout << "\n\n";
+                system("pause");
+                break;
+            case 3:
+                opt3();
+                cout << "\n\n";
+                system("pause");
+                break;
+            case 4:
+                opt4();
+                cout << "\n\n";
+                system("pause");
+                break;
+            case 5:
+                opt5();
+                cout << "\n\n";
+                system("pause");
+                break;
+            case 0:
+                system("pause");
+                exit(0);
+                break;
+            default:
+                cout << "\n Optiune invalida!";
+        }
+    }while(opt != 0);
+}
+
+
+int main() {
+    comanda_online<vegetariana> cov;
+    cin >> cov;
+    cov.document_contabil("document.txt");
 }
