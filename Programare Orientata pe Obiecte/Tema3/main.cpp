@@ -94,6 +94,7 @@ public:
                 cout << "EROARE ! Cantitatea nu poate fi mai mica sau egala cu 0!";
             else if(i == 3)
                 cout << "EROARE ! Pretul nu poate fi mai mic sau egal cu 0!";
+            system("pause");
            exit(EXIT_FAILURE);
         }
     }
@@ -195,6 +196,7 @@ public:
                 cout << "EROARE ! Numar ingrediente invalid (<0)!\n";
             else if(i == 4)
                 cout << "EROARE ! Valoare citita este diferita de 0 si 1\n";
+            system("pause");
             exit(EXIT_FAILURE);
         }
     }
@@ -894,4 +896,5 @@ void menu()
 
 int main() {
     menu();
+    return 0;
 }
