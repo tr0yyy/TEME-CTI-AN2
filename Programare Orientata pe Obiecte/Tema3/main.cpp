@@ -355,7 +355,7 @@ public:
     {
         return cnt_prod;
     }
-    const string get_nume_pizzerie()
+    string get_nume_pizzerie() const  
     {
         return nume_pizzerie;
     }
@@ -382,7 +382,7 @@ public:
     {
         produse.erase(produse.begin(),produse.end());
     }
-    const string get_nume_pizzerie()
+    string get_nume_pizzerie() const
     {
         return nume_pizzerie;
     }
