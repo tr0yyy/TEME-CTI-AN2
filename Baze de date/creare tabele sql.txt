@@ -1,12 +1,10 @@
----------
-
 CREATE TABLE propulsie
 ( propulsie_id numeric(10) not null,
   nume_propulsie varchar(255) not null,
   constraint pk_propulsie primary key (propulsie_id)
-  );
+ );
   
-CREATE TABLE rang
+  CREATE TABLE rang
 ( rang_id numeric(10) not null,
   nume_rang varchar(255) not null,
   regim_v2_indusi numeric(2) not null,
@@ -31,7 +29,7 @@ CREATE TABLE operator
   anul_fondarii numeric(4) not null,
   constraint pk_op primary key (op_id),
   constraint fk_op_tipop foreign key (tipop_id) references tip_operator(tipop_id)
-)
+);
 
 CREATE TABLE hala
 (
@@ -75,16 +73,16 @@ CREATE TABLE mecanic
 CREATE TABLE locomotiva
 (
   loco_id numeric(10) not null,
-  prod_id numeric(10),
-  propulsie_id numeric(10) ,
-  rang_id numeric(10),
-  op_id numeric(10),
-  hala_id numeric(10),
+  prod_id numeric(10) not null,
+  propulsie_id numeric(10) not null,
+  rang_id numeric(10) not null,
+  op_id numeric(10) not null,
+  hala_id numeric(10) not null,
   putere_motor numeric(10) not null,
   anul_fabricatiei numeric(10) not null,
   numar_parc numeric(10) not null,
   clasa numeric(3) not null,
-  primary key (loco_id),
+  constraint pk_loco primary key (loco_id),
   constraint fk_locomotiva_prod
   foreign key (prod_id) references producator(prod_id),
   constraint fk_locomotiva_propulsie
@@ -100,8 +98,8 @@ CREATE TABLE locomotiva
 CREATE TABLE alocare
 (
   id number(10,0) not null,
-  mecanic_id number(10,0),
-  loco_id number(10,0),
+  mecanic_id number(10,0) not null,
+  loco_id number(10,0) not null,
   constraint fk_mecanic_aloc foreign key (mecanic_id) references mecanic(mecanic_id),
   constraint fk_loco_aloc foreign key (loco_id) references locomotiva(loco_id),
   constraint pk_alocare primary key (id)
