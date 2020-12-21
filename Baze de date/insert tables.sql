@@ -1,7 +1,7 @@
-insert into propulsie values (1,'electric'),
-insert into propulsie values (2,'diesel-electric'),
-insert into propulsie values (3,'diesel-hidraulic'),
-insert into propulsie values (4,'aburi');
+insert into propulsie values (1,'electric')
+insert into propulsie values (2,'diesel-electric')
+insert into propulsie values (3,'diesel-hidraulic')
+insert into propulsie values (4,'aburi')
 
 insert into rang values (1,'rapid',65,90,160)
 insert into rang values (2,'personal',50,65,120)
