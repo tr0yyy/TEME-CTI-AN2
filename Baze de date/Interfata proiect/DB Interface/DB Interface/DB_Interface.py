@@ -27,4 +27,6 @@ ttk.Label(tab3, text="Afisare date locomotiva operata de CFR Calatori, cu propul
 ttk.Label(tab4, text="Exemplificare constrangere on delete cascade").grid(column=0, row=0, padx=30, pady=30)
 ttk.Label(tab5, text="Utilizarea vizualizarilor").grid(column=0, row=0, padx=30, pady=30)
 
+
+
 root.mainloop()  
