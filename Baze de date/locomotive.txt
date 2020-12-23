@@ -1,0 +1,36 @@
+30 - 15 electric 15 diesel
+
+
+ELECTRIC
+41-0004-2 - electroputere(1) CFR CALATORI(1) - HALA 1
+41-0106-9 - electroputere(1) CFR CALATORI(1) - HALA 1
+41-0387-5 - electroputere(1) CFR CALATORI(1) - HALA 1
+477-538-9 - softronic(2) CFR CALATORI(1) - HALA 1
+477-613-0 - softronic(2) CFR CALATORI(1) - HALA 2
+477-871-1 - softronic(2) CFR CALATORI(1) - HALA 2
+CFR Marfa 40-0603-3 - electroputere(1) CFR MARFA(2) - HALA 2
+CFR Marfa 40-0342-8 - electroputere(1) CFR MARFA(2) - HALA 2
+CFR Marfa 41-0170-5 - electroputere(1) CFR MARFA(2) - HALA 2
+EA054 - electroputere(1) marfa GFR(5) - HALA 3
+EA052 - electroputere(1) marfa GFR(5) - HALA 3
+EA 604 - electroputere(1) marfa GFR(5) - HALA 3
+EA 002 - electroputere(1) marfa GFR(5) - HALA 3
+EA176 - electroputere(1) marfa GFR(5) - HALA 3
+CFR 477-498-6 - softronic(2) CFR CALATORI(1) - HALA 3
+
+DIESEL
+62-0423-4 - electroputere(1) CFR MARFA(2) - HALA 1
+62-0741-9 - electroputere(1) SERVTRANS(6) - HALA 1
+62-0768-2 - electroputere(1) SERVTRANS(6) - HALA 1
+77-0905-8 - faur(4) CFR CALATORI(1) - HALA 1
+77-0917-3 - faur(4) CFR CALATORI(1) - HALA 2
+78-0781-1 - faur(4) CFR CALATORI(1) - HALA 2
+96-2001-4 - siemens(5) CFR CALATORI(1) - HALA 2
+96-2010-5 - siemens(5) CFR CALATORI(1) - HALA 2
+96-2018-8 - siemens(5) CFR CALATORI(1) - HALA 2
+97-0337-2 - alstom(6) REGIO CALATORI(4) - HALA 3
+97-0502-1 - alstom(6) REGIO CALATORI(4) - HALA 3
+97-0507-0 - alstom(6) REGIO CALATORI(4) - HALA 3
+82-0136-0 - electroputere(1) LDH CFR MARFA(2) - HALA 3
+82-0260-8 - electroputere(1) LDH CFR MARFA(2) - HALA 3
+82-0338-5 - electroputere(1) LDH SERVTRANS(6) - HALA 3

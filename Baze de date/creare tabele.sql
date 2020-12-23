@@ -46,6 +46,8 @@ CREATE TABLE hala
   an_constructie numeric(4) not null
 )
 
+
+
 CREATE TABLE locatie
 (
   locatie_id number(3) constraint pk_loc_id primary key,
