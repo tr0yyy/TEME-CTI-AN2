@@ -65,4 +65,6 @@ insert into mecanic values (28,'Stolojan','Vasile',TO_DATE('24-06-1975','dd-mm-y
 insert into mecanic values (29,'Tavitian','Victor',TO_DATE('01-05-1992','dd-mm-yyyy'),3642);
 insert into mecanic values (30,'Gilca','Luca',TO_DATE('30-08-1974','dd-mm-yyyy'),3004);
 
+commit
+
 
