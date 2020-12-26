@@ -126,8 +126,3 @@ insert into alocare values (27,4,27);
 insert into alocare values (28,3,28);
 insert into alocare values (29,2,29);
 insert into alocare values (30,1,30);
-
-
-commit
-
-
