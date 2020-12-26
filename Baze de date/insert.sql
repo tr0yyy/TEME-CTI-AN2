@@ -65,6 +65,69 @@ insert into mecanic values (28,'Stolojan','Vasile',TO_DATE('24-06-1975','dd-mm-y
 insert into mecanic values (29,'Tavitian','Victor',TO_DATE('01-05-1992','dd-mm-yyyy'),3642);
 insert into mecanic values (30,'Gilca','Luca',TO_DATE('30-08-1974','dd-mm-yyyy'),3004);
 
+insert into locomotiva values (1,1,1,1,1,1,5100,1968,4,41);
+insert into locomotiva values (2,1,1,2,1,1,5100,1971,106,41);
+insert into locomotiva values (3,1,1,1,1,1,5100,1973,387,41);
+insert into locomotiva values (4,2,1,1,1,1,5400,2010,538,477);
+insert into locomotiva values (5,2,1,1,1,2,5400,2009,613,477);
+insert into locomotiva values (6,2,1,1,1,2,5400,2011,871,477);
+insert into locomotiva values (7,1,1,3,2,2,5100,1979,603,40);
+insert into locomotiva values (8,1,1,3,2,2,5100,1980,342,40);
+insert into locomotiva values (9,1,1,3,2,2,5100,1982,170,41);
+insert into locomotiva values (10,1,1,3,5,3,5100,1984,54,40);
+insert into locomotiva values (11,1,1,3,5,3,5100,1980,52,40);
+insert into locomotiva values (12,1,1,3,5,3,5100,1978,604,41);
+insert into locomotiva values (13,1,1,3,5,3,5100,1974,2,40);
+insert into locomotiva values (14,1,1,3,5,3,5100,1968,176,41);
+insert into locomotiva values (15,2,1,1,1,3,5100,2009,498,477);
+insert into locomotiva values (16,1,2,2,2,1,2100,1976,423,62);
+insert into locomotiva values (17,1,2,2,6,1,2100,1980,741,62);
+insert into locomotiva values (18,1,2,2,6,1,2100,1977,768,62);
+insert into locomotiva values (19,4,2,2,1,1,444,1946,905,77);
+insert into locomotiva values (20,4,2,2,1,2,444,1950,917,77);
+insert into locomotiva values (21,4,2,2,1,2,444,1952,781,78);
+insert into locomotiva values (22,5,2,1,1,2,1800,1991,2001,96);
+insert into locomotiva values (23,5,2,1,1,2,1800,2000,2010,96);
+insert into locomotiva values (24,5,2,1,1,2,1800,2001,2018,96);
+insert into locomotiva values (25,6,2,2,4,3,2000,1975,337,97);
+insert into locomotiva values (26,6,2,1,4,3,2000,1968,502,97);
+insert into locomotiva values (27,6,2,1,4,3,2000,1969,507,97);
+insert into locomotiva values (28,1,3,3,1,3,1100,1965,136,82);
+insert into locomotiva values (29,1,3,3,1,3,1100,1970,260,82);
+insert into locomotiva values (30,1,3,3,1,3,1100,1968,338,82);
+
+insert into alocare values (1,30,1);
+insert into alocare values (2,29,2);
+insert into alocare values (3,28,3);
+insert into alocare values (4,27,4);
+insert into alocare values (5,26,5);
+insert into alocare values (6,25,6);
+insert into alocare values (7,24,7);
+insert into alocare values (8,23,8);
+insert into alocare values (9,22,9);
+insert into alocare values (10,21,10);
+insert into alocare values (11,20,11);
+insert into alocare values (12,19,12);
+insert into alocare values (13,18,13);
+insert into alocare values (14,17,14);
+insert into alocare values (15,16,15);
+insert into alocare values (16,15,16);
+insert into alocare values (17,14,17);
+insert into alocare values (18,13,18);
+insert into alocare values (19,12,19);
+insert into alocare values (20,11,20);
+insert into alocare values (21,10,21);
+insert into alocare values (22,9,22);
+insert into alocare values (23,8,23);
+insert into alocare values (24,7,24);
+insert into alocare values (25,6,25);
+insert into alocare values (26,5,26);
+insert into alocare values (27,4,27);
+insert into alocare values (28,3,28);
+insert into alocare values (29,2,29);
+insert into alocare values (30,1,30);
+
+
 commit
 
 
