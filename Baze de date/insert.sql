@@ -3,9 +3,9 @@ insert into propulsie values (2,'diesel-electric');
 insert into propulsie values (3,'diesel-hidraulic');
 insert into propulsie values (4,'aburi');
 
-insert into rang values (1,'rapid',65,90,160);
-insert into rang values (2,'personal',50,65,120);
-insert into rang values (3,'marfa',40,50,100);
+insert into rang values (1,'rapid',90,65,160);
+insert into rang values (2,'personal',65,50,120);
+insert into rang values (3,'marfa',50,40,100);
 
 insert into tip_operator values (1,'de stat');
 insert into tip_operator values (2,'privat');
@@ -126,3 +126,5 @@ insert into alocare values (27,4,27);
 insert into alocare values (28,3,28);
 insert into alocare values (29,2,29);
 insert into alocare values (30,1,30);
+
+commit;

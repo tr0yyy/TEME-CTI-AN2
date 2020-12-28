@@ -1,3 +1,14 @@
+drop table propulsie cascade constraints;
+drop table rang cascade constraints;
+drop table tip_operator cascade constraints;
+drop table operator cascade constraints;
+drop table hala cascade constraints;
+drop table locatie cascade constraints;
+drop table producator cascade constraints;
+drop table mecanic cascade constraints;
+drop table locomotiva cascade constraints;
+drop table alocare cascade constraints;
+
 CREATE TABLE propulsie
 ( propulsie_id number(1) CONSTRAINT pk_propulsie primary key,
   nume_propulsie varchar(255) not null
@@ -101,3 +112,5 @@ CREATE TABLE alocare
   constraint fk_mecanic_aloc foreign key (mecanic_id) references mecanic(mecanic_id) on delete cascade,
   constraint fk_loco_aloc foreign key (loco_id) references locomotiva(loco_id) on delete cascade
 );
+
+commit;

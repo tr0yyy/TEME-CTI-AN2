@@ -8,7 +8,7 @@ root.title("Managementul unui depou de locomotive - Baze de Date")
 root.geometry("1024x576")
 tabControl = ttk.Notebook(root)
 
-conn = oracle.connect("alexandrunicoi","alexandru#15","193.226.51.37:1521/o11g")
+conn = oracle.connect("username","password","193.226.51.37:1521/o11g")
 
 cursor = conn.cursor()
 
