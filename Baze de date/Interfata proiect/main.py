@@ -23,15 +23,8 @@ tabControl.add(tab1, text = 'Tab 1')
 tabControl.add(tab2, text = 'Tab 2')
 tabControl.add(tab3, text = 'Tab 3')
 tabControl.add(tab4, text = 'Tab 4')
-tabControl.add(tab5, text = 'Tab 5')
 
 tabControl.pack(expand = 1, fill = "both")
-
-#ttk.Label(tab1, text="Listare continut cu posibilitate de sortare").grid(column=0, row=0, padx=30, pady=30)
-ttk.Label(tab2, text="Modificare informatii").grid(column=0, row=0, padx=30, pady=30)
-ttk.Label(tab3, text="Afisare date locomotiva operata de CFR Calatori, cu propulsie Diesel").grid(column=0, row=0, padx=30, pady=30)
-ttk.Label(tab4, text="Exemplificare constrangere on delete cascade").grid(column=0, row=0, padx=30, pady=30)
-ttk.Label(tab5, text="Utilizarea vizualizarilor").grid(column=0, row=0, padx=30, pady=30)
 
 def selectallfrom(table):
     sql = f"SELECT * FROM {table}"
@@ -45,6 +38,12 @@ def selectallfromdesc(table,order):
     sql = f"SELECT * FROM {table} ORDER BY {order} desc"
     return sql
 
+def commitsql():
+    cursor.execute("commit")
+
+def rollbacksql():
+    cursor.execute("rollback")
+
 #Tab 1
 
 def tabeltab1(table):
@@ -56,7 +55,7 @@ def tabeltab1(table):
     if table == 'tip_operator':
         tv["columns"] = (0,1)
     elif table == 'operator':
-        tv["columns"] = (0, 1)
+        tv["columns"] = (0, 1, 2, 3, 4)
     elif table == 'rang':
         tv["columns"] = (0, 1, 2, 3, 4)
     elif table == 'propulsie':
@@ -85,43 +84,6 @@ def tabeltab1(table):
         tv.insert('', 'end', values=i)
     cursor.execute("commit")
 
-def tabeltab1(table):
-    sql = selectallfrom(table)
-    cursor = conn.cursor()
-    cursor.execute(sql)
-    result = cursor.fetchall()
-    cntcoloane = len(result[0])
-    if table == 'operator':
-        tv["columns"] = (0, 1, 2, 3, 4)
-    elif table == 'tip_operator':
-        tv["columns"] = (0,1)
-    elif table == 'rang':
-        tv["columns"] = (0, 1, 2, 3, 4)
-    elif table == 'propulsie':
-        tv["columns"] = (0, 1)
-    elif table == 'alocare':
-        tv["columns"] = (0, 1, 2)
-    elif table == 'mecanic':
-        tv["columns"] = (0, 1, 2, 3, 4)
-    elif table == 'producator':
-        tv["columns"] = (0, 1, 2, 3, 4)
-    elif table == 'locatie':
-        tv["columns"] = (0, 1, 2, 3)
-    elif table == 'hala':
-        tv["columns"] = (0, 1, 2, 3)
-    else:
-        tv["columns"] = (0,1,2,3,4,5,6,7,8,9)
-    tv.pack()
-    col_names = [i[0] for i in cursor.description]
-    for i in range(0,cntcoloane):
-        tv.heading(i, text=col_names[i])
-        if cntcoloane > 5:
-            tv.column(i, minwidth=0, width=90)
-        else:
-            tv.column(i, minwidth=0, width=160)
-    for i in result:
-        tv.insert('', 'end', values=i)
-    cursor.execute("commit")
 
 def tabelsorttab1(table,order,cond):
     if cond == -1:
@@ -183,7 +145,6 @@ def actiunebuton2():
         tv.delete(i)
     tabelsorttab1(entry,coloana,-1)
 
-
 def actiunebuton3():
     entry = E1.get()
     E1.delete(0, END)
@@ -211,6 +172,165 @@ butontab2.place(x = 350, y = 300)
 butontab3 = Button(tab1,text='Descrescator', command=actiunebuton3)
 butontab3.place(x = 480, y = 300)
 
+#tab2
+
+texttab2 = Label(tab2, text="Alege tabelul din lista de mai jos")
+texttab2.place(x = 10, y = 10)
+listtab2 = Listbox(tab2, selectmode='single')
+listtab2.place(x=10 , y = 30)
+listtab2.insert(1,'operator')
+listtab2.insert(2,'tip_operator')
+listtab2.insert(3,'rang')
+listtab2.insert(4,'propulsie')
+listtab2.insert(5,'alocare')
+listtab2.insert(6,'mecanic')
+listtab2.insert(7,'producator')
+listtab2.insert(8,'locatie')
+listtab2.insert(9,'hala')
+listtab2.insert(10,'locomotiva')
+
+def executeselect(table, item):
+    column = ""
+    if table == 'operator':
+        column = "op_id"
+    elif table == 'tip_operator':
+        column = "tipop_id"
+    elif table == 'rang':
+        column = "rang_id"
+    elif table == 'propulsie':
+        column = "propulsie_id"
+    elif table == 'alocare':
+        column = "id"
+    elif table == 'mecanic':
+        column = "mecanic_id"
+    elif table == 'producator':
+        column = "prod_id"
+    elif table == 'locatie':
+        column = "locatie_id"
+    elif table == 'hala':
+        column = "hala_id"
+    else:
+        column = "loco_id"
+    sql = f"SELECT {column} from {table} where {column} = {item}"
+    return sql
+
+Ltab2 = Label(tab2, text="Scrie ID-ul unic al inregistrarii")
+Etab2 = Entry(tab2, bd=2)
+Ltab3 = Label(tab2, text="Scrie coloana pe care vrei sa o modifici")
+Etab3 = Entry(tab2, bd=2)
+Ltab4 = Label(tab2, text="Scrie valoarea / textul cu care vrei sa modifici inregistrarea")
+Etab4 = Entry(tab2, bd=2)
+
+varchar = ["tip_operator","nume_operator","nume_rang","nume_propulsie","nume","prenume","data_angajarii","oras","regiune","tara","nume_producator","sediu"]
+
+
+def selectitem():
+    cs = listtab2.curselection()
+    text = listtab2.get(cs)
+    entry = Etab2.get()
+    Etab2.delete(0, END)
+    Etab2.insert(0, "")
+    sql = executeselect(text,entry)
+    print(sql)
+    result = cursor.execute(sql)
+    linie = result.fetchall()
+    print(linie)
+
+def modifyitem():
+    cs = listtab2.curselection()
+    tabel = listtab2.get(cs)
+    coloana = Etab3.get()
+    id = Etab2.get()
+    sql = ""
+    id_inreg = ""
+    new = Etab4.get()
+    if tabel == 'operator':
+        id_inreg = "op_id"
+    elif tabel == 'tip_operator':
+        id_inreg = "tipop_id"
+    elif tabel == 'rang':
+        id_inreg = "rang_id"
+    elif tabel == 'propulsie':
+        id_inreg = "propulsie_id"
+    elif tabel == 'alocare':
+        id_inreg = "id"
+    elif tabel == 'mecanic':
+        id_inreg = "mecanic_id"
+    elif tabel == 'producator':
+        id_inreg = "prod_id"
+    elif tabel == 'locatie':
+        id_inreg = "locatie_id"
+    elif tabel == 'hala':
+        id_inreg = "hala_id"
+    else:
+        id_inreg = "loco_id"
+    if coloana in varchar:
+        sql = f"UPDATE {tabel} SET {coloana} = '{new}' WHERE {id_inreg} = {id}"
+    else:
+        sql = f"UPDATE {tabel} SET {coloana} = {new} WHERE {id_inreg} = {id}"
+    cursor.execute(sql)
+    cursor.execute("commit")
+    Etab2.delete(0, END)
+    Etab2.insert(0, "")
+    Etab3.delete(0, END)
+    Etab3.insert(0, "")
+    Etab4.delete(0, END)
+    Etab4.insert(0, "")
+
+
+def deleteitem():
+    cs = listtab2.curselection()
+    tabel = listtab2.get(cs)
+    id = Etab2.get()
+    if tabel == 'operator':
+        id_inreg = "op_id"
+    elif tabel == 'tip_operator':
+        id_inreg = "tipop_id"
+    elif tabel == 'rang':
+        id_inreg = "rang_id"
+    elif tabel == 'propulsie':
+        id_inreg = "propulsie_id"
+    elif tabel == 'alocare':
+        id_inreg = "id"
+    elif tabel == 'mecanic':
+        id_inreg = "mecanic_id"
+    elif tabel == 'producator':
+        id_inreg = "prod_id"
+    elif tabel == 'locatie':
+        id_inreg = "locatie_id"
+    elif tabel == 'hala':
+        id_inreg = "hala_id"
+    else:
+        id_inreg = "loco_id"
+    sql = f"DELETE FROM {tabel} WHERE {id_inreg} = {id}"
+    cursor.execute(sql)
+    Etab2.delete(0, END)
+    Etab2.insert(0, "")
+    Etab3.delete(0, END)
+    Etab3.insert(0, "")
+    Etab4.delete(0, END)
+    Etab4.insert(0, "")
+
+
+
+def aparitielabel(table):
+    Ltab2.place(x = 180, y = 70)
+    Etab2.place(x=180, y=100) #id-ul inregistrarii
+    Ltab3.place(x=470,y=70)
+    Etab3.place(x=470, y=100) #coloana
+    Ltab4.place(x=470, y=130)
+    Etab4.place(x=470, y=160) #valoare de suprascriere
+    butontab3 = Button(tab2, text='Sterge!', command=deleteitem)
+    butontab3.place(x=200, y=130)
+    butontab2 = Button(tab2, text='Modifica!', command=modifyitem)
+    butontab2.place(x=470, y=190)
+
+def go(event):
+    cs = listtab2.curselection()
+    text = listtab2.get(cs)
+    aparitielabel(text)
+
+listtab2.bind('<Double-1>', go)
 
 root.mainloop()
 
