@@ -12,10 +12,6 @@ int binarySearch(const vector<int>& a, int e, int lb, int ub){
 	}
 }
 
-int binarySearch(const vector<int>& a, int e){
-	return binarySearch(a,e,0,a.size()-1);
-}
-
 int expSearch(const vector<int>& a, int e){
 	int res = 0;
 	while(res < a.size() && a[res] < e)
