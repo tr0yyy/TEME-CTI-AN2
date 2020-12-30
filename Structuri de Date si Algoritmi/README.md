@@ -1,5 +1,5 @@
 ## EXERCITII DE PREGATIRE PENTRU COLOCVIU - STRUCTURI DE DATE SI ALGORITMI
 
-Aici voi posta PDF-urile cu laboratoarele seriei 25 din 2019/20.
+Diverse implementari utile pentru materia Structuri de Date si Algoritmi
 
-Pentru propunerea diverselor materiale, nu ezitați să faceți un pull request.
+Profesor: Guillaume Ducoffe
