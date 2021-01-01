@@ -8,7 +8,7 @@ root.title("Managementul unui depou de locomotive - Baze de Date")
 root.geometry("1024x576")
 tabControl = ttk.Notebook(root)
 
-conn = oracle.connect("username","password","linkbazadedate")
+conn = oracle.connect("username","password","serverdb")
 
 cursor = conn.cursor()
 
@@ -19,11 +19,11 @@ tab3 = ttk.Frame(tabControl)
 tab4 = ttk.Frame(tabControl)
 tab5 = ttk.Frame(tabControl)
 
-tabControl.add(tab1, text = 'Tab 1')
-tabControl.add(tab2, text = 'Tab 2')
-tabControl.add(tab3, text = 'Tab 3')
-tabControl.add(tab4, text = 'Tab 4')
-tabControl.add(tab5, text = 'Tab 5')
+tabControl.add(tab1, text = 'Listare continut')
+tabControl.add(tab2, text = 'Modificare/stergere continut')
+tabControl.add(tab3, text = 'Listare cu join')
+tabControl.add(tab4, text = 'Afisare cu functie group')
+tabControl.add(tab5, text = 'Utilizare vizualizari')
 
 tabControl.pack(expand = 1, fill = "both")
 
@@ -395,6 +395,51 @@ def actiunebutontab4():
 
 butontab4 = Button(tab4,text='Afiseaza tabel', command=actiunebutontab4)
 butontab4.place(x = 80, y = 300)
+
+#tab5
+
+tv_tab5 = ttk.Treeview(tab5, show = "headings", height = "10")
+L1_tab5 = Label(tab5, text="Afisare vizualizare compusa cu date despre locomotive produse dupa anul 1975")
+L1_tab5.place(x= 50, y = 270)
+L2_tab5 = Label(tab5, text="Afisare vizualizare complexa cu date despre operatori")
+L2_tab5.place(x= 700, y = 270)
+
+def tabeltab5(sql, col):
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    cntcoloane = len(result[0])
+    if col == 1:
+        tv_tab5["columns"] = (0,1,2,3,4,5)
+    else:
+        tv_tab5["columns"] = (0, 1, 2, 3, 4)
+    tv_tab5.pack()
+    col_names = [i[0] for i in cursor.description]
+    for i in range(0,cntcoloane):
+        tv_tab5.heading(i, text=col_names[i])
+        tv_tab5.column(i, minwidth=0, width=160)
+    for i in result:
+        tv_tab5.insert('', 'end', values=i)
+    cursor.execute("commit")
+
+def actiunebutontab5():
+     for i in tv_tab5.get_children():
+         tv_tab5.delete(i)
+     sql = """select * from vw_compus"""
+     tabeltab5(sql,1)
+
+def actiunebuton2tab5():
+    for i in tv_tab5.get_children():
+        tv_tab5.delete(i)
+    sql = """select * from vw_complex"""
+    tabeltab5(sql,0)
+
+
+butontab5 = Button(tab5,text='Afiseaza vizualizare', command=actiunebutontab5)
+butontab5.place(x = 80, y = 300)
+
+buton2tab5 = Button(tab5,text='Afiseaza vizualizare', command=actiunebuton2tab5)
+buton2tab5.place(x = 780, y = 300)
 
 
 root.mainloop()
