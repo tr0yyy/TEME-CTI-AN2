@@ -8,7 +8,7 @@ root.title("Managementul unui depou de locomotive - Baze de Date")
 root.geometry("1024x576")
 tabControl = ttk.Notebook(root)
 
-conn = oracle.connect("username","password","193.226.51.37:1521/o11g")
+conn = oracle.connect("username","password","linkbazadedate")
 
 cursor = conn.cursor()
 
@@ -23,6 +23,7 @@ tabControl.add(tab1, text = 'Tab 1')
 tabControl.add(tab2, text = 'Tab 2')
 tabControl.add(tab3, text = 'Tab 3')
 tabControl.add(tab4, text = 'Tab 4')
+tabControl.add(tab5, text = 'Tab 5')
 
 tabControl.pack(expand = 1, fill = "both")
 
@@ -332,8 +333,68 @@ def go(event):
 
 listtab2.bind('<Double-1>', go)
 
+
+#tab3
+
+tv_tab3 = ttk.Treeview(tab3, show = "headings", height = "10")
+L1_tab3 = Label(tab3, text="Afisare locomotive tip electric, produse de Electroputere Craiova")
+L1_tab3.place(x= 80, y = 270)
+
+def tabeltab3():
+    sql = "select nume_producator, nume_propulsie, clasa, numar_parc from producator p join locomotiva l on p.prod_id = l.prod_id join propulsie pp on l.propulsie_id = pp.propulsie_id where nume_producator like 'Electroputere' and nume_propulsie like 'electric'"
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    cntcoloane = len(result[0])
+    tv_tab3["columns"] = (0,1,2,3)
+    tv_tab3.pack()
+    col_names = [i[0] for i in cursor.description]
+    for i in range(0,cntcoloane):
+        tv_tab3.heading(i, text=col_names[i])
+        tv_tab3.column(i, minwidth=0, width=160)
+    for i in result:
+        tv_tab3.insert('', 'end', values=i)
+    cursor.execute("commit")
+
+def actiunebutontab3():
+     for i in tv_tab3.get_children():
+         tv_tab3.delete(i)
+     tabeltab3()
+
+
+butontab3 = Button(tab3,text='Afiseaza tabel', command=actiunebutontab3)
+butontab3.place(x = 80, y = 300)
+
+#tab4
+
+tv_tab4 = ttk.Treeview(tab4, show = "headings", height = "10")
+L1_tab4 = Label(tab4, text="Afisare numarul de locomotive grupate dupa tipul de propulsie mai mare decat 5")
+L1_tab4.place(x= 80, y = 270)
+
+def tabeltab4():
+    sql = """select count(loco_id) as "Nr. locomotive", nume_propulsie from locomotiva join propulsie using (propulsie_id) group by nume_propulsie having count(loco_id) > 5"""
+    cursor = conn.cursor()
+    cursor.execute(sql)
+    result = cursor.fetchall()
+    cntcoloane = len(result[0])
+    tv_tab4["columns"] = (0,1)
+    tv_tab4.pack()
+    col_names = [i[0] for i in cursor.description]
+    for i in range(0,cntcoloane):
+        tv_tab4.heading(i, text=col_names[i])
+        tv_tab4.column(i, minwidth=0, width=160)
+    for i in result:
+        tv_tab4.insert('', 'end', values=i)
+    cursor.execute("commit")
+
+def actiunebutontab4():
+     for i in tv_tab4.get_children():
+         tv_tab4.delete(i)
+     tabeltab4()
+
+
+butontab4 = Button(tab4,text='Afiseaza tabel', command=actiunebutontab4)
+butontab4.place(x = 80, y = 300)
+
+
 root.mainloop()
-
-
-
-
