@@ -9,14 +9,14 @@ where anul_fabricatiei > 1975
 
 update locomotiva
 set putere_motor = 2101
-where numar_parc = 768
+where numar_parc = 768 and clasa = 62
 
 update vw_compus
 set putere_motor = 2100
-where numar_parc = 768
+where numar_parc = 768 and clasa = 62
 
-select * from vw_compus where numar_parc=768
-select * from locomotiva where numar_parc=768
+select * from vw_compus where numar_parc=768 and clasa = 62
+select * from locomotiva where numar_parc=768 and clasa = 62
 
 create or replace view vw_complex as
 select nume_operator, tip_operator, numar_angajati, count(loco_id)
