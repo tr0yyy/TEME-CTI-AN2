@@ -1,5 +1,6 @@
 ## Calculatoare și Tehnologia Informației 
 ### Facultatea de Matematică - Informatică, Universitatea din București
+---------
 
 Acest repository conține diverse materiale utile pentru studenții secției CTI, dar și pentru cei de la Informatică sau Matematică-Informatică, întrucât unele materii se intersectează între domenii.
 
