@@ -1,5 +1,4 @@
 ## Elemente de Electronică Analogică
----------
 Profesor: Mihai Dincă
 ---------
 Carte curs - Manualul Studentului - Autor Mihai P. Dincă
