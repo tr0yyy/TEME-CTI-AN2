@@ -1,5 +1,5 @@
-# TEME - PROIECTE - PROGRAMARE ORIENTATA PE OBIECTE
-## CALCULATOARE SI TEHNOLOGIA INFORMATIEI 2020/2021
-#### Aici sunt proiectele realizate de mine in decursul semestrului la materia "Programare orientata pe obiect"
-#### Limbaj utilizat : C++
-#### Cerințele și rezolvarea se găsesc în fiecare folder corespondent temei.
+## Programare Orientată pe Obiecte
+
+Profesor: Anca Dobrovăț
+
+Recomand utilizarea programelor Visual Studio Code sau CLION pentru lucrul la această materie deoarece vă arată erorile în timp ce scrieți, fapt ce vă economisește timpul pentru teme / colocviu.
