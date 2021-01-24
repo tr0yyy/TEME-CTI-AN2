@@ -1,5 +1,6 @@
 ## Calculatoare și Tehnologia Informației 
 ### Facultatea de Matematică - Informatică, Universitatea din București
+---------
 
 Acest repository conține diverse materiale utile pentru studenții secției CTI, dar și pentru cei de la Informatică sau Matematică-Informatică, întrucât unele materii se intersectează între domenii.
 
@@ -10,7 +11,7 @@ Dacă ai și tu materiale și vrei să contribui, ești oricând bine-venit!
 ---------
 ### Anul I:
 * [pc](https://github.com/tr0yyy/TUTORIAT-PC-AN1): Programarea Calculatoarelor (Limbaj utilizat: C)
-* [tp](): Tehnici de Programare (Limbaj utilizat: C++)
+* [tp]: Tehnici de Programare (Limbaj utilizat: C++)
 * [pl](https://github.com/tr0yyy/TUTORIAT-PL-AN1): Proiectare Logică (Măgurele)
 
 ### Anul II:
