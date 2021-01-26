@@ -10,7 +10,7 @@ Dacă ai și tu materiale și vrei să contribui, ești oricând bine-venit!
  Cuprins
 ---------
 ### Anul I:
-* [analiza](https://github.com/tr0yyy/teme-fmi-cti/tree/master/analiza): Analiza Matematica
+* [am](https://github.com/tr0yyy/teme-fmi-cti/tree/master/am): Analiza Matematica
 * [pc](https://github.com/tr0yyy/TUTORIAT-PC-AN1): Programarea Calculatoarelor (Limbaj utilizat: C)
 * [pl](https://github.com/tr0yyy/TUTORIAT-PL-AN1): Proiectare Logică (Măgurele)
 * [cn](https://github.com/tr0yyy/teme-fmi-cti/tree/master/cn): Calcul Numeric (Limbaj utilizat: MATLAB)
