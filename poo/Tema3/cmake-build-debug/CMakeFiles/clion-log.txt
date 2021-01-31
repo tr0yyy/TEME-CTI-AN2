@@ -1,4 +1,4 @@
-"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" "C:\Users\Alexandru\Desktop\253\PROGRAMARE ORIENTATA OBIECT\TEME LABORATOR\3"
+"C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Alexandru\Documents\GitHub\teme-fmi-cti\poo\Tema3
 -- The C compiler identification is GNU 8.1.0
 -- The CXX compiler identification is GNU 8.1.0
 -- Check for working C compiler: C:/Program Files/mingw-w64/x86_64-8.1.0-posix-seh-rt_v6-rev0/mingw64/bin/gcc.exe
@@ -15,4 +15,4 @@
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/Users/Alexandru/Desktop/253/PROGRAMARE ORIENTATA OBIECT/TEME LABORATOR/3/cmake-build-debug
+-- Build files have been written to: C:/Users/Alexandru/Documents/GitHub/teme-fmi-cti/poo/Tema3/cmake-build-debug

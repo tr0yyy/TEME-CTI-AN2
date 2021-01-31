@@ -54,19 +54,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2020.3.1\bin\cmake\win\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "C:\Users\Alexandru\Desktop\253\PROGRAMARE ORIENTATA OBIECT\TEME LABORATOR\3"
+CMAKE_SOURCE_DIR = C:\Users\Alexandru\Documents\GitHub\teme-fmi-cti\poo\Tema3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "C:\Users\Alexandru\Desktop\253\PROGRAMARE ORIENTATA OBIECT\TEME LABORATOR\3\cmake-build-debug"
+CMAKE_BINARY_DIR = C:\Users\Alexandru\Documents\GitHub\teme-fmi-cti\poo\Tema3\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -93,14 +93,14 @@ clean: CMakeFiles/3.dir/clean
 CMakeFiles/3.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\3.dir\build.make CMakeFiles/3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\3.dir\build.make CMakeFiles/3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="C:\Users\Alexandru\Desktop\253\PROGRAMARE ORIENTATA OBIECT\TEME LABORATOR\3\cmake-build-debug\CMakeFiles" --progress-num=1,2 "Built target 3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Alexandru\Documents\GitHub\teme-fmi-cti\poo\Tema3\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target 3"
 .PHONY : CMakeFiles/3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Alexandru\Desktop\253\PROGRAMARE ORIENTATA OBIECT\TEME LABORATOR\3\cmake-build-debug\CMakeFiles" 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Alexandru\Documents\GitHub\teme-fmi-cti\poo\Tema3\cmake-build-debug\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\Alexandru\Desktop\253\PROGRAMARE ORIENTATA OBIECT\TEME LABORATOR\3\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Alexandru\Documents\GitHub\teme-fmi-cti\poo\Tema3\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/3.dir/rule
 
 # Convenience name for target.
