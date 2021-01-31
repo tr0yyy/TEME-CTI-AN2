@@ -1,0 +1,3 @@
+C:/Users/Alexandru/Documents/GitHub/teme-fmi-cti/sda/implementari/cmake-build-debug/CMakeFiles/implementari.dir
+C:/Users/Alexandru/Documents/GitHub/teme-fmi-cti/sda/implementari/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Alexandru/Documents/GitHub/teme-fmi-cti/sda/implementari/cmake-build-debug/CMakeFiles/rebuild_cache.dir
