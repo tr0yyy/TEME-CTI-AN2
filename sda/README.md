@@ -1,9 +1,11 @@
 ## Structuri de Date si Algoritmi
 ### Profesor: Ducoffe Guillaume
+
 geekforgeeks is your friend
----------
+
+---
 ### Algoritmi / Complexități
----------
+
 STRUCTURI DE DATE:
 
 * VECTOR : Cautare O(n) daca nu este sortat ; O(logn) daca este sortat (cautare binara)
