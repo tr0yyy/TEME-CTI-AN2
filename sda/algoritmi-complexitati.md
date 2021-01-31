@@ -15,7 +15,7 @@ STRUCTURI DE DATE:
 SORTARI:
 
 * [Bucket Sort](https://www.geeksforgeeks.org/bucket-sort-2/) - Pentru numere cu virgula cuprinse intr-un range (exemplu 0-1). Daca se foloseste pe range, are o complexitate average de circa O(n)
-* [Radix Sort](https://www.geeksforgeeks.org/radix-sort/) - Pentru cu numere cu acelasi numar de cifre. NU ESTE SORTARE PRIN COMPARARE. Complexitate O(n+k)
+* [Radix Sort](https://www.geeksforgeeks.org/radix-sort/) - Pentru cu numere cu acelasi numar de cifre. NU ESTE SORTARE PRIN COMPARARE. Complexitate O(nk)
 * [Quick Sort](https://www.geeksforgeeks.org/quick-sort/) - Complexitate O(nlogn). NU SE FOLOSESTE PE SIR APROAPE SORTAT DEOARECE DEVINE O(n^2)
 * [Merge Sort](https://www.geeksforgeeks.org/merge-sort/) - Complexitate O(nlogn). Pentru liste inlantuite este preferat acesta in loc de Quick Sort
 * [Heap Sort](https://www.geeksforgeeks.org/heap-sort/) - Complexitate O(nlogn). Se foloseste pentru vector aproape sortat.
