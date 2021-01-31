@@ -1,7 +1,7 @@
 ## Structuri de Date si Algoritmi
 ### Profesor: Ducoffe Guillaume
---------
 geekforgeeks is your friend
+---------
 ### Algoritmi / Complexități
 ---------
 STRUCTURI DE DATE:
