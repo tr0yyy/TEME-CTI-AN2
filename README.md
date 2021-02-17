@@ -26,6 +26,6 @@ Dacă ai și tu materiale și vrei să contribui, ești oricând bine-venit!
 * [eap](https://github.com/tr0yyy/teme-fmi-cti/tree/master/eap): Elemente Avansate de Programare (Limbaj utilizat: Java)
 * [ps](https://github.com/tr0yyy/teme-fmi-cti/tree/master/ps): Probabilități și Statistică (Limbaj utilizat: R)
 * [frr](https://github.com/tr0yyy/teme-fmi-cti/tree/master/frr): Fundamentele Rutării în Rețea (Aplicație utilizată: CISCO Packet Tracer)
-* [cn(mg)](https://github.com/tr0yyy/teme-fmi-cti/tree/master/cn(mg)): Calculatoare Numerice (Măgurele)
+* [cn(mg)](https://github.com/tr0yyy/teme-fmi-cti/tree/master/cn(mg)): Calculatoare Numerice (Măgurele) (Limbaje utilizate: Verilog / MIPS)
 * [ed](https://github.com/tr0yyy/teme-fmi-cti/tree/master/ed): Electronică Digitală (Măgurele)
 
