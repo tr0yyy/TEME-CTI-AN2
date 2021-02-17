@@ -23,3 +23,9 @@ Dacă ai și tu materiale și vrei să contribui, ești oricând bine-venit!
 * [sda](https://github.com/tr0yyy/teme-fmi-cti/tree/master/sda): Structuri de Date și Algoritmi (Limbaj utilizat: C++)
 * [eea](https://github.com/tr0yyy/teme-fmi-cti/tree/master/eea): Elemente de Electronică Analogică (Măgurele)
 * [ts](https://github.com/tr0yyy/teme-fmi-cti/tree/master/ts): Teoria Sistemelor (Măgurele)
+* [eap](https://github.com/tr0yyy/teme-fmi-cti/tree/master/eap): Elemente Avansate de Programare (Limbaj utilizat: Java)
+* [ps](https://github.com/tr0yyy/teme-fmi-cti/tree/master/ps): Probabilități și Statistică (Limbaj utilizat: R)
+* [frr](https://github.com/tr0yyy/teme-fmi-cti/tree/master/frr): Fundamentele Rutării în Rețea (Aplicație utilizată: CISCO Packet Tracer)
+* [cn(mg)](https://github.com/tr0yyy/teme-fmi-cti/tree/master/cn(mg)): Calculatoare Numerice (Măgurele)
+* [ed](https://github.com/tr0yyy/teme-fmi-cti/tree/master/ed): Electronică Digitală (Măgurele)
+
