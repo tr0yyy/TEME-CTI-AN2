@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        /*///reversestringii
+        ///reversestringii
         String sir = scanner.next();
         int k = scanner.nextInt();
         ReverseStringII rs = new ReverseStringII();
