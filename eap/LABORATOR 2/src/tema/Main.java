@@ -13,7 +13,7 @@ public class Main {
         ///palindrom
         int numar = scanner.nextInt();
         Palindrom x = new Palindrom();
-        System.out.println(x.IsPalindrom(numar));*/
+        System.out.println(x.IsPalindrom(numar));
         ///reverseinteger
         int intreg = scanner.nextInt();
         ReverseInteger y = new ReverseInteger();
