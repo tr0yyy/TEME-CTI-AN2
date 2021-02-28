@@ -14,7 +14,7 @@ Dacă ai și tu materiale și vrei să contribui, ești oricând bine-venit!
 * [pc](https://github.com/tr0yyy/TUTORIAT-PC-AN1): Programarea Calculatoarelor (Limbaj utilizat: C)
 * [pl](https://github.com/tr0yyy/TUTORIAT-PL-AN1): Proiectare Logică (Măgurele)
 * [cn](https://github.com/tr0yyy/teme-fmi-cti/tree/master/cn): Calcul Numeric (Limbaj utilizat: MATLAB)
-* [tp](https://github.com/tr0yyy/teme-fmi-cti/tree/master/tp): Tehnici de Programare (Limbaj utilizat: C++)
+* [tp](https://github.com/tr0yyy/teme-fmi-cti/tree/master/tp): Tehnici de Programare (Limbaj utilizat: C++) - ([Repo tutoriat"](https://github.com/tr0yyy/tutoriat-tp-an1))
 
 ### Anul II:
 * [bd](https://github.com/tr0yyy/teme-fmi-cti/tree/master/bd): Baze de Date (Oracle SQL)
