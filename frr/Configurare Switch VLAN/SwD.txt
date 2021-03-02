@@ -1,0 +1,30 @@
+vlan 10
+name CTI
+exit
+vlan 20
+name STUDENT
+exit
+vlan 30
+name STAFF
+exit
+vlan 33
+name MAN
+exit
+vlan 35
+name NULL
+exit
+interface range fa 0/1-19
+exit
+interface range fa 0/1-19, giga 0/1-2
+switchport mode access
+switchport access vlan 35
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+exit
+interface range fa 0/20-24
+switchport mode trunk
+switchport mode trunk native vlan 33
+switchport trunk native vlan 33
+switchport trunk allowed vlan 10,20,30,33
+exit
