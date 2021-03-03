@@ -1,0 +1,44 @@
+enable
+configure terminal
+no ip domain-lookup
+hostname .........
+no cdp run
+service password-encryption
+enable secret ciscosecpa55
+enable password ciscoenapa55
+banner motd *Azi la ora 16:00 va fi colocviu!*
+line console 0
+password ciscoconpa55
+login
+logging synchronous
+exec-timeout 20 20
+exit
+line vty 0 15
+password ciscovtypa55
+login
+logging synchronous
+exec-timeout 25 25
+exit
+exit
+clock set 16:15:00 13 JAN 2021
+configure terminal
+ip domain-name cti.ro
+username Admin01 privilege 15 secret Admin01pa55
+line vty 0 15
+transport input ssh
+login local
+exit
+crypto key generate rsa
+
+
+
+
+
+
+
+
+
+
+
+
+
