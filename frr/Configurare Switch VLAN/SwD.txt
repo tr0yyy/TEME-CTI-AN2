@@ -24,7 +24,6 @@ switchport port-security violation shutdown
 exit
 interface range fa 0/20-24
 switchport mode trunk
-switchport mode trunk native vlan 33
 switchport trunk native vlan 33
 switchport trunk allowed vlan 10,20,30,33
 exit
