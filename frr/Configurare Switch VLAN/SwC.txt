@@ -1,0 +1,12 @@
+interface range fa 0/1-19, giga 0/2, fa 0/21-23
+switchport mode access
+switchport access vlan 35
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+exit
+interface range fa 0/20, fa 0/24, giga 0/1
+switchport mode trunk
+switchport trunk native vlan 33
+switchport trunk allowed vlan 10,20,30,33
+exit
