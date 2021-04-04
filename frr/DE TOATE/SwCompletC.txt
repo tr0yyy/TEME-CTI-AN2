@@ -1,0 +1,59 @@
+enable
+configure terminal
+no ip domain-lookup
+hostname SwC
+no cdp run
+service password-encryption
+enable secret ciscosecpa55
+enable password ciscoenapa55
+banner motd *Azi la ora 16:00 va fi o sedinta de informare!*
+line console 0
+password ciscoconpa55
+login
+logging synchronous
+exec-timeout 20 20
+exit
+line vty 0 15
+password ciscovtypa55
+login
+logging synchronous
+exec-timeout 25 25
+exit
+exit
+clock set 23:18:00 04 APR 2021
+configure terminal
+ip domain-name cti.ro
+username Admin01 privilege 15 secret Admin01pa55
+line vty 0 15
+transport input ssh
+login local
+exit
+crypto key generate rsa
+2048
+vlan 55
+name ALBANIA
+exit
+vlan 56
+name ANGLIA
+exit
+vlan 57
+name AUSTRIA
+exit
+vlan 99
+name MAN
+exit
+vlan 33
+name NULL
+exit
+interface range fa 0/1-20, giga 0/2
+switchport mode access
+switchport access vlan 33
+switchport port-security maximum 2
+switchport port-security mac-address sticky
+switchport port-security violation shutdown
+shutdown
+exit
+interface range fa 0/21-24, giga 0/1
+switchport mode trunk
+switchport trunk native vlan 99
+switchport trunk allowed vlan 55,56,57,99
