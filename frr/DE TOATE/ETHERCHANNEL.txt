@@ -10,5 +10,8 @@ canal 2 acc1-d2
 canal 3 acc2-d1
 canal4 acc2-d2
 
-interface vlan X pe fiecare switch pt a functiona
+interface vlan Y pe fiecare switch pt a functiona
+unde Y este numarul vlanului
+si pus IP pe switch din LAN MAN / ADMIN.
+
 poate cauza bug packet tracer -> orga de lumini -> restart packet tracer / buton de reload
