@@ -1,0 +1,29 @@
+Router DHCP:
+
+ip dhcp excluded-address 153.254.0.1 153.254.1.101
+ip dhcp excluded-address 153.254.80.193 153.254.80.195
+ip dhcp excluded-address 153.254.80.129 153.254.80.131
+ip dhcp excluded-address 153.254.80.209 153.254.80.214
+ip dhcp pool VLAN91
+network 153.254.0.0 255.255.192.0
+default-router 153.254.0.1
+dns-server 153.254.80.126
+domain-name cti.ro
+exit
+ip dhcp pool VLAN92
+network 153.254.80.192 255.255.255.240
+default-router 153.254.80.193
+dns-server 153.254.80.126
+domain-name cti.ro
+exit
+ip dhcp pool VLAN93
+network 153.254.80.208 255.255.255.248
+default-router 153.254.80.209
+dns-server 153.254.80.126
+domain-name cti.ro
+exit
+
+Router RVLAN:
+
+pe fiecare subinterfata
+ip helper-address IP-default-gateway-subinterface
