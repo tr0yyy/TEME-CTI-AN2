@@ -1,0 +1,7 @@
+router rip
+version 2
+no auto-summary
+network IP 
+
+
+unde IP este ip-ul interfetei din interiorul ruterului (interfete direct conectate)
