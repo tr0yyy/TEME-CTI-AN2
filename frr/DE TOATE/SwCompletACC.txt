@@ -52,6 +52,9 @@ switchport port-security
 switchport port-security maximum 2
 switchport port-security mac-address sticky
 switchport port-security violation shutdown
+switchport port-security aging time 1
+spanning-tree bpduguard enable
+spanning-tree portfast
 exit
 interface range fa 0/6-10
 switchport mode access
@@ -60,6 +63,9 @@ switchport port-security
 switchport port-security maximum 2
 switchport port-security mac-address sticky
 switchport port-security violation shutdown
+switchport port-security aging time 1
+spanning-tree bpduguard enable
+spanning-tree portfast
 exit
 interface range fa 0/12-14
 switchport mode access
@@ -68,6 +74,9 @@ switchport port-security
 switchport port-security maximum 2
 switchport port-security mac-address sticky
 switchport port-security violation shutdown
+switchport port-security aging time 1
+spanning-tree bpduguard enable
+spanning-tree portfast
 exit
 interface range fa 0/5, fa 0/11, giga 0/2
 switchport mode access
@@ -75,6 +84,9 @@ switchport access vlan 33
 switchport port-security maximum 2
 switchport port-security mac-address sticky
 switchport port-security violation shutdown
+switchport port-security aging time 1
+spanning-tree bpduguard enable
+spanning-tree portfast
 shutdown
 exit
 interface range fa 0/15-24, giga 0/1
