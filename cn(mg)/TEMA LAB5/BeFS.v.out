@@ -1,0 +1,86 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001e5821b5980 .scope module, "BeFS_tb" "BeFS_tb" 2 14;
+ .timescale 0 0;
+v000001e5821b16e0_0 .var "a", 3 0;
+v000001e5821b1640_0 .var "b", 3 0;
+v000001e5821b1500_0 .var "bi", 3 0;
+v000001e5821b1960_0 .net "bo", 3 0, L_000001e5821b1280;  1 drivers
+v000001e5821b0ce0_0 .net "d", 3 0, L_000001e5821b0f60;  1 drivers
+S_000001e5821b5b10 .scope module, "sub1" "BeFS" 2 34, 2 6 0, S_000001e5821b5980;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 4 "Bo";
+    .port_info 1 /OUTPUT 4 "D";
+    .port_info 2 /INPUT 4 "A";
+    .port_info 3 /INPUT 4 "B";
+    .port_info 4 /INPUT 4 "Bi";
+v000001e5822da550_0 .net "A", 3 0, v000001e5821b16e0_0;  1 drivers
+v000001e582182b20_0 .net "B", 3 0, v000001e5821b1640_0;  1 drivers
+v000001e5821b5ca0_0 .net "Bi", 3 0, v000001e5821b1500_0;  1 drivers
+v000001e5821b5d40_0 .net "Bo", 3 0, L_000001e5821b1280;  alias, 1 drivers
+v000001e5821ff840_0 .net "D", 3 0, L_000001e5821b0f60;  alias, 1 drivers
+L_000001e5821fffc0 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000001e5821ff8e0_0 .net *"_ivl_10", 3 0, L_000001e5821fffc0;  1 drivers
+v000001e5821ff980_0 .net *"_ivl_11", 7 0, L_000001e5821b1000;  1 drivers
+v000001e5821ffe30_0 .net *"_ivl_13", 7 0, L_000001e5821b1b40;  1 drivers
+L_000001e582200008 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000001e5821ffed0_0 .net *"_ivl_16", 3 0, L_000001e582200008;  1 drivers
+v000001e5821b0ab0_0 .net *"_ivl_17", 7 0, L_000001e5821b1a00;  1 drivers
+v000001e5821b0b50_0 .net *"_ivl_3", 7 0, L_000001e5821b1460;  1 drivers
+L_000001e5821fff78 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000001e5821b0c40_0 .net *"_ivl_6", 3 0, L_000001e5821fff78;  1 drivers
+v000001e5821b0d80_0 .net *"_ivl_7", 7 0, L_000001e5821b1aa0;  1 drivers
+L_000001e5821b1280 .part L_000001e5821b1a00, 4, 4;
+L_000001e5821b0f60 .part L_000001e5821b1a00, 0, 4;
+L_000001e5821b1460 .concat [ 4 4 0 0], v000001e5821b16e0_0, L_000001e5821fff78;
+L_000001e5821b1aa0 .concat [ 4 4 0 0], v000001e5821b1640_0, L_000001e5821fffc0;
+L_000001e5821b1000 .arith/sub 8, L_000001e5821b1460, L_000001e5821b1aa0;
+L_000001e5821b1b40 .concat [ 4 4 0 0], v000001e5821b1500_0, L_000001e582200008;
+L_000001e5821b1a00 .arith/sub 8, L_000001e5821b1000, L_000001e5821b1b40;
+    .scope S_000001e5821b5980;
+T_0 ;
+    %vpi_call 2 19 "$dumpfile", "BeFS.vcd" {0 0 0};
+    %vpi_call 2 20 "$dumpvars" {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001e5821b16e0_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001e5821b1640_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001e5821b1500_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001e5821b1500_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001e5821b1640_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001e5821b1500_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001e5821b16e0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001e5821b1500_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001e5821b1640_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001e5821b1500_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 31 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "BeFS.v";

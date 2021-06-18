@@ -1,0 +1,91 @@
+$date
+	Wed Mar 24 21:20:39 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module BeFA_tb $end
+$var reg 4 ! a [3:0] $end
+$upscope $end
+$scope module BeFA_tb $end
+$var reg 4 " b [3:0] $end
+$upscope $end
+$scope module BeFA_tb $end
+$var reg 4 # ci [3:0] $end
+$upscope $end
+$scope module BeFA_tb $end
+$var wire 4 $ co [3:0] $end
+$upscope $end
+$scope module BeFA_tb $end
+$var wire 4 % s [3:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 %
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#10
+b1 %
+b1 #
+#20
+b10 %
+b1 "
+#30
+b1 %
+b0 #
+#40
+b10 %
+b1 !
+#50
+b11 %
+b1 #
+#60
+b10 %
+b0 "
+#70
+b1 %
+b0 #
+#80
+b10 %
+b1 #
+#90
+b11 %
+b1 "
+#100
+b10 %
+b0 #
+#120
+b11 %
+b1 #
+#130
+b10 %
+b0 "
+#140
+b1 %
+b0 #
+#150
+b10 %
+b1 #
+#160
+b11 %
+b1 "
+#170
+b10 %
+b0 #
+#190
+b11 %
+b1 #
+#200
+b10 %
+b0 "
+#210
+b1 %
+b0 #
+#220

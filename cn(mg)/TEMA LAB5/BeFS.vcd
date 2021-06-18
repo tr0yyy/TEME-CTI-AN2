@@ -1,0 +1,81 @@
+$date
+	Wed Mar 24 21:20:44 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module BeFS_tb $end
+$var wire 4 ! d [3:0] $end
+$var wire 4 " bo [3:0] $end
+$var reg 4 # a [3:0] $end
+$var reg 4 $ b [3:0] $end
+$var reg 4 % bi [3:0] $end
+$scope module sub1 $end
+$var wire 4 & A [3:0] $end
+$var wire 4 ' B [3:0] $end
+$var wire 4 ( Bi [3:0] $end
+$var wire 4 ) D [3:0] $end
+$var wire 4 * Bo [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+b0 $
+b0 #
+b0 "
+b0 !
+$end
+#10
+b1111 !
+b1111 )
+b1111 "
+b1111 *
+b1 %
+b1 (
+#20
+b1110 !
+b1110 )
+b1 $
+b1 '
+#30
+b1111 !
+b1111 )
+b0 %
+b0 (
+#40
+b0 !
+b0 )
+b0 "
+b0 *
+b1 #
+b1 &
+#50
+b1111 !
+b1111 )
+b1111 "
+b1111 *
+b1 %
+b1 (
+#60
+b0 !
+b0 )
+b0 "
+b0 *
+b0 $
+b0 '
+#70
+b1 !
+b1 )
+b0 %
+b0 (
+#80

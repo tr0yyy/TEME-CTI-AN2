@@ -1,0 +1,128 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001c1977dbd00 .scope module, "BeFA_tb" "BeFA_tb" 2 13;
+ .timescale 0 0;
+v000001c197693b40_0 .var "a", 3 0;
+v000001c197693dc0_0 .var "b", 3 0;
+v000001c197693460_0 .var "ci", 3 0;
+v000001c197693fa0_0 .net "co", 3 0, L_000001c197694220;  1 drivers
+v000001c197694180_0 .net "s", 3 0, L_000001c197693e60;  1 drivers
+S_000001c197695960 .scope module, "fadd" "BeFA" 2 53, 2 6 0, S_000001c1977dbd00;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 4 "Co";
+    .port_info 1 /OUTPUT 4 "S";
+    .port_info 2 /INPUT 4 "A";
+    .port_info 3 /INPUT 4 "B";
+    .port_info 4 /INPUT 4 "Ci";
+v000001c1977dbe90_0 .net "A", 3 0, v000001c197693b40_0;  1 drivers
+v000001c197662b20_0 .net "B", 3 0, v000001c197693dc0_0;  1 drivers
+v000001c1977d8dd0_0 .net "Ci", 3 0, v000001c197693460_0;  1 drivers
+v000001c197695af0_0 .net "Co", 3 0, L_000001c197694220;  alias, 1 drivers
+v000001c197695b90_0 .net "S", 3 0, L_000001c197693e60;  alias, 1 drivers
+L_000001c1976e8870 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000001c197695c30_0 .net *"_ivl_10", 3 0, L_000001c1976e8870;  1 drivers
+v000001c197695cd0_0 .net *"_ivl_11", 7 0, L_000001c1976933c0;  1 drivers
+v000001c197695d70_0 .net *"_ivl_13", 7 0, L_000001c1976942c0;  1 drivers
+L_000001c1976e88b8 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000001c197693190_0 .net *"_ivl_16", 3 0, L_000001c1976e88b8;  1 drivers
+v000001c197693230_0 .net *"_ivl_17", 7 0, L_000001c197693500;  1 drivers
+v000001c1976932d0_0 .net *"_ivl_3", 7 0, L_000001c197693c80;  1 drivers
+L_000001c1976e8828 .functor BUFT 1, C4<0000>, C4<0>, C4<0>, C4<0>;
+v000001c197693a00_0 .net *"_ivl_6", 3 0, L_000001c1976e8828;  1 drivers
+v000001c1976940e0_0 .net *"_ivl_7", 7 0, L_000001c197694040;  1 drivers
+L_000001c197694220 .part L_000001c197693500, 4, 4;
+L_000001c197693e60 .part L_000001c197693500, 0, 4;
+L_000001c197693c80 .concat [ 4 4 0 0], v000001c197693b40_0, L_000001c1976e8828;
+L_000001c197694040 .concat [ 4 4 0 0], v000001c197693dc0_0, L_000001c1976e8870;
+L_000001c1976933c0 .arith/sum 8, L_000001c197693c80, L_000001c197694040;
+L_000001c1976942c0 .concat [ 4 4 0 0], v000001c197693460_0, L_000001c1976e88b8;
+L_000001c197693500 .arith/sum 8, L_000001c1976933c0, L_000001c1976942c0;
+    .scope S_000001c1977dbd00;
+T_0 ;
+    %vpi_call 2 17 "$dumpfile", "BeFA.vcd" {0 0 0};
+    %vpi_call 2 18 "$dumpvars", 32'sb00000000000000000000000000000001, v000001c197693b40_0, v000001c197693dc0_0, v000001c197693460_0, v000001c197693fa0_0, v000001c197694180_0 {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693b40_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693dc0_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693dc0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693b40_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693dc0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693dc0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693b40_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693dc0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693dc0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693b40_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693dc0_0, 0, 4;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001c197693460_0, 0, 4;
+    %delay 10, 0;
+    %vpi_call 2 50 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "BeFA.v";

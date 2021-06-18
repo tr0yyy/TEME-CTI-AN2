@@ -1,0 +1,48 @@
+$date
+	Wed Mar 24 21:20:47 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module StFA_tb $end
+$var reg 4 ! a [3:0] $end
+$upscope $end
+$scope module StFA_tb $end
+$var reg 4 " b [3:0] $end
+$upscope $end
+$scope module StFA_tb $end
+$var reg 4 # ci [3:0] $end
+$upscope $end
+$scope module StFA_tb $end
+$var wire 4 $ co [3:0] $end
+$upscope $end
+$scope module StFA_tb $end
+$var wire 4 % s [3:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bz %
+bz $
+b0 #
+b0 "
+b0 !
+$end
+#10
+b1 #
+#20
+b1 "
+#30
+b0 #
+#40
+b1 !
+#50
+b1 #
+#60
+b0 "
+#70
+b0 #
+#80

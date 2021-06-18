@@ -1,0 +1,71 @@
+$date
+	Thu Jun 03 15:36:18 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module Testbench $end
+$var wire 4 ! Display [3:0] $end
+$var reg 7 " A [6:0] $end
+$scope module encoder $end
+$var wire 7 # in [6:0] $end
+$var reg 4 $ out [3:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 $
+b1111110 #
+b1111110 "
+b0 !
+$end
+#10
+b1 !
+b1 $
+b110000 "
+b110000 #
+#20
+b10 !
+b10 $
+b1101101 "
+b1101101 #
+#30
+b11 !
+b11 $
+b1111001 "
+b1111001 #
+#40
+b100 !
+b100 $
+b110011 "
+b110011 #
+#50
+b101 !
+b101 $
+b1011011 "
+b1011011 #
+#60
+b110 !
+b110 $
+b1011111 "
+b1011111 #
+#70
+b111 !
+b111 $
+b1110000 "
+b1110000 #
+#80
+b1000 !
+b1000 $
+b1111111 "
+b1111111 #
+#90
+b1001 !
+b1001 $
+b1110011 "
+b1110011 #
+#100

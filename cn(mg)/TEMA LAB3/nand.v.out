@@ -1,0 +1,80 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000020d74846310 .scope module, "mynand_tb" "mynand_tb" 2 20;
+ .timescale 0 0;
+v0000020d7489ab10_0 .var "a", 0 0;
+v0000020d7489abb0_0 .var "b", 0 0;
+v0000020d7489a070_0 .net "q", 0 0, L_0000020d74854850;  1 drivers
+v0000020d7489acf0_0 .net "w1", 0 0, L_0000020d748233b0;  1 drivers
+v0000020d7489a110_0 .net "w2", 0 0, L_0000020d74854650;  1 drivers
+S_0000020d74855ab0 .scope module, "n1" "mynand" 2 39, 2 12 0, S_0000020d74846310;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "q";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000020d74855f10 .functor AND 1, v0000020d7489ab10_0, v0000020d7489ab10_0, C4<1>, C4<1>;
+L_0000020d748233b0 .functor NOT 1, L_0000020d74855f10, C4<0>, C4<0>, C4<0>;
+v0000020d745cb9b0_0 .net *"_ivl_0", 0 0, L_0000020d74855f10;  1 drivers
+v0000020d748464a0_0 .net "a", 0 0, v0000020d7489ab10_0;  1 drivers
+v0000020d74823670_0 .net "b", 0 0, v0000020d7489ab10_0;  alias, 1 drivers
+v0000020d748230a0_0 .net "q", 0 0, L_0000020d748233b0;  alias, 1 drivers
+S_0000020d74855c40 .scope module, "n2" "mynand" 2 40, 2 12 0, S_0000020d74846310;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "q";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000020d74823510 .functor AND 1, v0000020d7489abb0_0, v0000020d7489abb0_0, C4<1>, C4<1>;
+L_0000020d74854650 .functor NOT 1, L_0000020d74823510, C4<0>, C4<0>, C4<0>;
+v0000020d74855dd0_0 .net *"_ivl_0", 0 0, L_0000020d74823510;  1 drivers
+v0000020d74855e70_0 .net "a", 0 0, v0000020d7489abb0_0;  1 drivers
+v0000020d74854120_0 .net "b", 0 0, v0000020d7489abb0_0;  alias, 1 drivers
+v0000020d748541c0_0 .net "q", 0 0, L_0000020d74854650;  alias, 1 drivers
+S_0000020d74854260 .scope module, "n3" "mynand" 2 41, 2 12 0, S_0000020d74846310;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "q";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000020d748546c0 .functor AND 1, L_0000020d748233b0, L_0000020d74854650, C4<1>, C4<1>;
+L_0000020d74854850 .functor NOT 1, L_0000020d748546c0, C4<0>, C4<0>, C4<0>;
+v0000020d748543f0_0 .net *"_ivl_0", 0 0, L_0000020d748546c0;  1 drivers
+v0000020d74854490_0 .net "a", 0 0, L_0000020d748233b0;  alias, 1 drivers
+v0000020d7489af70_0 .net "b", 0 0, L_0000020d74854650;  alias, 1 drivers
+v0000020d7489a890_0 .net "q", 0 0, L_0000020d74854850;  alias, 1 drivers
+    .scope S_0000020d74846310;
+T_0 ;
+    %vpi_call 2 25 "$dumpfile", "nand.vcd" {0 0 0};
+    %vpi_call 2 26 "$dumpvars" {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020d7489ab10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020d7489abb0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020d7489ab10_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0000020d7489abb0_0, 0, 1;
+    %delay 5, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0000020d7489ab10_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 32 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_0000020d74846310;
+T_1 ;
+    %vpi_call 2 36 "$monitor", "time=%0d, a=%b, b=%b, q=%b", $time, v0000020d7489ab10_0, v0000020d7489abb0_0, v0000020d7489a070_0 {0 0 0};
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "nand.v";
