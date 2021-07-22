@@ -3,6 +3,9 @@
 
 ---
 
+* Mergi la cursuri, explica foarte bine teoria si te va ajuta pe viitor
+* La ultimul curs vei primi model de examen care va semana cu examenul
+
 ### ETAPA 1
 
 * In cadrul sistemului creat, se pot efecuta urmatoarele operatii:
